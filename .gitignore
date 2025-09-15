@@ -1,0 +1,22 @@
+# General
+.DS_Store
+.env
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+virtualenv/
+
+# Build artifacts
+build/
+dist/
+
+# IDEs
+.vscode/
+.idea/
