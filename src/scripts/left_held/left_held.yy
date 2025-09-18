@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"left_held",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"left_held",
+  "parent":{
+    "name":"ButtonHeld",
+    "path":"folders/Scripts/Buttonz/ButtonHeld.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

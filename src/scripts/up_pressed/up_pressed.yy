@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"up_pressed",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"up_pressed",
+  "parent":{
+    "name":"ButtonPressed",
+    "path":"folders/Scripts/Buttonz/ButtonPressed.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
