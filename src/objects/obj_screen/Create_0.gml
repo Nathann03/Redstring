@@ -1,19 +1,17 @@
+//local variables
+time = 0;
+started = true;
+//screen variables. we will make the screen in the game start event
 screenX = 0;
 screenY = 0;
 screenW = 320;
 screenH = 240;
 screenScale = 2;
-//create a surface for the screen to be drawn on
-screen = surface_create(screenW, screenH);
-//if the gpu doesn't support surfaces, revert back to viewports
-if (screen == -1) { instance_destroy(); exit; }
-
-//local variables
-time = 0;
-started = true;
+screen = -1;
 
 //debug only variables
 debugMessage = "";
+showDebugText = true;
 
 scr_start()
 

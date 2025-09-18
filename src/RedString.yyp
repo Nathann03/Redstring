@@ -44,7 +44,9 @@
     {"id":{"name":"obj_dialoguer","path":"objects/obj_dialoguer/obj_dialoguer.yy",},},
     {"id":{"name":"obj_screen","path":"objects/obj_screen/obj_screen.yy",},},
     {"id":{"name":"obj_writer","path":"objects/obj_writer/obj_writer.yy",},},
+    {"id":{"name":"room_intromenu","path":"rooms/room_intromenu/room_intromenu.yy",},},
     {"id":{"name":"room_start","path":"rooms/room_start/room_start.yy",},},
+    {"id":{"name":"room_tutorial","path":"rooms/room_tutorial/room_tutorial.yy",},},
     {"id":{"name":"testroom","path":"rooms/testroom/testroom.yy",},},
     {"id":{"name":"bt1_pressed","path":"scripts/bt1_pressed/bt1_pressed.yy",},},
     {"id":{"name":"down_held","path":"scripts/down_held/down_held.yy",},},
@@ -66,6 +68,8 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"room_start","path":"rooms/room_start/room_start.yy",},},
+    {"roomId":{"name":"room_intromenu","path":"rooms/room_intromenu/room_intromenu.yy",},},
+    {"roomId":{"name":"room_tutorial","path":"rooms/room_tutorial/room_tutorial.yy",},},
     {"roomId":{"name":"testroom","path":"rooms/testroom/testroom.yy",},},
   ],
   "templateType":"game",

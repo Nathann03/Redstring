@@ -1,6 +1,7 @@
 function scr_start() {
 	// constants
-	#macro VERSION "2025917a" // year-month-day-revision
+	#macro VERSION "2025918a" // year-month-day-revision
+	#macro SAVE_FILE_VERSION 1
 	#macro KEY_UP 5
 	#macro KEY_DOWN 6
 	#macro KEY_LEFT 7
