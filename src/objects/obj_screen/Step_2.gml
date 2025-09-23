@@ -1,5 +1,5 @@
 //draw the screen
-if (surface_exists(screen))
+if (surface_exists(screen) and draw_screen())
 {
 	surface_reset_target();
 	draw_clear(0);
