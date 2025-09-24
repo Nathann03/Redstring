@@ -13,6 +13,11 @@ function scr_start() {
 	global.action = 0;
 	global.facing = 0;
 	global.txr = 1;
+	
+	for (var i = 0; i < 48; i++) {
+		global.msg[i] = "%%";
+	}
+	
 	global.debug = true;
 	
 	draw_set_color(c_white);
