@@ -11,5 +11,5 @@ if (global.debug) {
 
 if (keyboard_check(vk_escape)) {
 	quitmod++;
-	if (quitmod > fps * 3) game_end();
+	if (quitmod > 90) game_end();
 } else { if (quitmod > 0) quitmod -= 6; };

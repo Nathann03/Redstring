@@ -9,6 +9,7 @@ function scr_start() {
 	#macro KEY_BT1 9
 	#macro KEY_BT2 10
 	#macro KEY_BT3 11
+	#macro c_select make_color_rgb(98, 255, 98)
 	// not constants
 	global.action = 0;
 	global.facing = 0;

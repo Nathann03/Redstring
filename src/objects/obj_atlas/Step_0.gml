@@ -38,7 +38,7 @@ if (bt1_pressed()) event_user(0);
 if (cutscene) {
 	//don't do anything
 } else if (moving) {
-	image_index += 0.2;
+	image_index += imageSpeed;
 } else {
 	image_index = 0;
 }
