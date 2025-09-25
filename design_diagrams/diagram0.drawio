@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="28.0.4">
+  <diagram name="Page-1" id="pSw8x3C9M-zYgT5TNihh">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="l0WcsWSsG9v-g_a3aXnf-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="l0WcsWSsG9v-g_a3aXnf-25" target="l0WcsWSsG9v-g_a3aXnf-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l0WcsWSsG9v-g_a3aXnf-25" value="&lt;h1&gt;Input&lt;/h1&gt;&lt;div&gt;Mouse and keyboard control for moving the detective character, examining evidence, and interacting with NPC dialogue.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Game setup data including sound, character design, etc&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Detective cases are preset with crime scenes and NPCs predefined, with variation driven by AI dialogue and behaviors.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Parameters for AI-driven case elements (evidence placement, suspect alibis, red herrings, and environmental clues).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;" vertex="1" parent="1">
+          <mxGeometry x="20" y="150" width="180" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="l0WcsWSsG9v-g_a3aXnf-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="l0WcsWSsG9v-g_a3aXnf-26" target="l0WcsWSsG9v-g_a3aXnf-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l0WcsWSsG9v-g_a3aXnf-26" value="&lt;h1&gt;Process&lt;/h1&gt;&lt;div&gt;Translate mouse and keyboard inputs into character movement, evidence collection, and dialogue interactions.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Run fast-inference agentic AI to generate dynamic suspect conversations and adjust case progression based on player choices.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Update and manage the detective’s case file in real time as new evidence is discovered and linked to leads.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Trigger narrative events and render smooth visual/audio feedback to maintain immersion in the investigation.&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="150" width="180" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="l0WcsWSsG9v-g_a3aXnf-27" value="&lt;h1&gt;Output&lt;/h1&gt;&lt;div&gt;Display updated crime scenes, character animations, and dialogue text in response to player actions.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Provide real-time suspect responses and branching conversations driven by the AI system.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Present case file updates showing collected evidence, linked leads, and overall investigation progress.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Deliver immersive audio and visual feedback, such as ambient sounds, clue discovery effects, and scene transitions.&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="540" y="150" width="180" height="410" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

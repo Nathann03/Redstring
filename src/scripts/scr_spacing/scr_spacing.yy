@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_spacing",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_spacing",
+  "parent":{
+    "name":"Writer",
+    "path":"folders/Scripts/Writer.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

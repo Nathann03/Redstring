@@ -1,0 +1,1 @@
+movement = (global.action == 0);

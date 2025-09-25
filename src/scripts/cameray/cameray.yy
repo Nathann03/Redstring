@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"cameray",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"cameray",
+  "parent":{
+    "name":"Camera",
+    "path":"folders/Scripts/Camera.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

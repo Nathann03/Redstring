@@ -1,0 +1,278 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="28.2.3">
+  <diagram name="Page-1" id="84FlOV6SFcABtvMzlKEd">
+    <mxGraphModel dx="937" dy="1052" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FyliGoKfZouHnRAMZUbt-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FyliGoKfZouHnRAMZUbt-1" target="FyliGoKfZouHnRAMZUbt-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-1" value="User" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FyliGoKfZouHnRAMZUbt-2" target="FyliGoKfZouHnRAMZUbt-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="330" />
+              <mxPoint x="180" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-2" value="UI Manager" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FyliGoKfZouHnRAMZUbt-3" target="FyliGoKfZouHnRAMZUbt-12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="450" />
+              <mxPoint x="270" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-3" value="Command Processor" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FyliGoKfZouHnRAMZUbt-4" target="FyliGoKfZouHnRAMZUbt-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-4" value="In Game Camera" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FyliGoKfZouHnRAMZUbt-12" target="FyliGoKfZouHnRAMZUbt-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="470" />
+              <mxPoint x="280" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" target="FyliGoKfZouHnRAMZUbt-15" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="450" />
+              <mxPoint x="590" y="450" />
+            </Array>
+            <mxPoint x="570" y="450" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" target="FyliGoKfZouHnRAMZUbt-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="610" />
+              <mxPoint x="390" y="610" />
+            </Array>
+            <mxPoint x="390" y="600" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.675;entryY=0.989;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="420" />
+              <mxPoint x="370" y="420" />
+            </Array>
+            <mxPoint x="370" y="430" as="sourcePoint" />
+            <mxPoint x="370" y="389.3399999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-12" value="Game Logic Engine&lt;div&gt;(Internal State Machine)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="430" width="250" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FyliGoKfZouHnRAMZUbt-15" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="470" />
+              <mxPoint x="590" y="470" />
+            </Array>
+            <mxPoint x="570" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-15" value="NPC Behavior system" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="610" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FyliGoKfZouHnRAMZUbt-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="620" />
+              <mxPoint x="370" y="620" />
+            </Array>
+            <mxPoint x="370" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FyliGoKfZouHnRAMZUbt-19" target="FyliGoKfZouHnRAMZUbt-22" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="710" />
+              <mxPoint x="350" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-19" value="AI NPC Dialogue" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="630" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FyliGoKfZouHnRAMZUbt-22" target="FyliGoKfZouHnRAMZUbt-19" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="710" />
+              <mxPoint x="330" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-22" value="Fast Inference Agentic AI Server" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="730" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="FyliGoKfZouHnRAMZUbt-25" target="FyliGoKfZouHnRAMZUbt-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-25" value="Visual Renderer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="519" y="410" />
+              <mxPoint x="519" y="410" />
+            </Array>
+            <mxPoint x="519" y="390" as="sourcePoint" />
+            <mxPoint x="519" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="FyliGoKfZouHnRAMZUbt-26" target="FyliGoKfZouHnRAMZUbt-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510" y="215" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-26" value="Audio System" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.675;entryY=0.989;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="499" y="430" as="sourcePoint" />
+            <mxPoint x="499" y="389" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="499" y="400" />
+              <mxPoint x="499" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FyliGoKfZouHnRAMZUbt-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="389" y="390" as="sourcePoint" />
+            <mxPoint x="389" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="389" y="420" />
+              <mxPoint x="389" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DyBoKRDtqbwIALonEroH-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="560" />
+              <mxPoint x="270" y="560" />
+            </Array>
+            <mxPoint x="320" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-2" value="Save/Persistence system" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="DyBoKRDtqbwIALonEroH-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="580" />
+              <mxPoint x="280" y="580" />
+            </Array>
+            <mxPoint x="320" y="580" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="DyBoKRDtqbwIALonEroH-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="550" />
+              <mxPoint x="590" y="550" />
+            </Array>
+            <mxPoint x="570" y="550" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DyBoKRDtqbwIALonEroH-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="570" />
+              <mxPoint x="590" y="570" />
+            </Array>
+            <mxPoint x="570" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-6" value="Case/State Management saving system" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-11" value="Precomputed similar Dialogue System" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="730" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="529" y="611" />
+              <mxPoint x="529" y="611" />
+            </Array>
+            <mxPoint x="529" y="601" as="sourcePoint" />
+            <mxPoint x="529" y="631" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="509" y="621" />
+              <mxPoint x="509" y="621" />
+            </Array>
+            <mxPoint x="509" y="631" as="sourcePoint" />
+            <mxPoint x="509" y="601" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="DyBoKRDtqbwIALonEroH-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="650" />
+              <mxPoint x="460" y="650" />
+            </Array>
+            <mxPoint x="440" y="650" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DyBoKRDtqbwIALonEroH-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="670" />
+              <mxPoint x="460" y="670" />
+            </Array>
+            <mxPoint x="440" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-18" value="AI Voice generation server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="630" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="429" y="710" />
+              <mxPoint x="429" y="710" />
+            </Array>
+            <mxPoint x="429" y="690" as="sourcePoint" />
+            <mxPoint x="429" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DyBoKRDtqbwIALonEroH-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="409" y="710" />
+              <mxPoint x="409" y="710" />
+            </Array>
+            <mxPoint x="409" y="730" as="sourcePoint" />
+            <mxPoint x="409" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
