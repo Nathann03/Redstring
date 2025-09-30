@@ -15,3 +15,8 @@
 - **Develop** the text and movement systems that allows the player to interact with NPC dialogue and navigate the game environment.  — _Assigned to Elias_.
 - **Develop** the save data system that allows the player to save the current state of the game (items collected, dialogue options explored) and allow that data to be read and loaded later  — _Assigned to Elias_.
 - **Design** the trustworthiness stat that changes how the player can interact with the game environment and NPCs based on how much they "trust" the player  — _Assigned to Elias_.
+- **Design** and implement a scalable save file format that structures player state data for persistence and LLM context integration.  — _Assigned to Elias_.
+- **Develop** a client-server request system that retrieves text responses from the backend and renders them in an interactive in-game textbox.  — _Assigned to Elias_.
+- **Create** a developer-facing debug system that streamlines testing through variable inspection, event triggers, and gameplay simulation tools.  — _Assigned to Elias_.
+- **Implement** the foundational NPC interaction system to enable core player-character dialogue and engagement mechanics.  — _Assigned to Elias_.
+- **Prototype** initial room environments to establish gameplay flow and functional structure before final asset integration and layout design.  — _Assigned to Elias_.
