@@ -1,0 +1,5 @@
+{
+  "elevenlabs_api_key": "replace-with-your-key-if-using-real-tts",
+  "vector_db_api_key": "optional-key-for-production"
+}
+

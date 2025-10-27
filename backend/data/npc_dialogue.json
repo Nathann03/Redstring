@@ -1,0 +1,112 @@
+{
+  "npc_data": [
+    {
+      "npc_id": "judge_emily",
+      "preset_dialogue": [
+        "I'm gathering my thoughts—ask about the town or the trial in the meantime.",
+        "Hold on, I'm still reviewing the court records.",
+        "Give me a second; try asking about the courthouse or the weather.",
+        "While I prepare my ruling, perhaps check on the jurors' notes."
+      ],
+      "anchor_facts": [
+        "She presided over the town's high-profile embezzlement case.",
+        "She keeps meticulous notes of courtroom events.",
+        "She sympathises with honest witnesses and dislikes evasive answers.",
+        "She volunteers at the town library on weekends."
+      ],
+      "responses": [
+        {
+          "source_id": "judge_emily_leave_trial",
+          "text": "I noticed Mr. K leaving toward the back exit around 9:05pm.",
+          "embedding_text": "Did anyone leave after the trial?",
+          "tags": ["trial", "movement", "timeline"]
+        },
+        {
+          "source_id": "judge_emily_schedule",
+          "text": "Court ended at 9pm sharp, and I stayed behind to file the closing paperwork.",
+          "embedding_text": "When did the trial end and what did you do afterwards?",
+          "tags": ["trial", "schedule"]
+        },
+        {
+          "source_id": "judge_emily_verdict_expectation",
+          "text": "I will deliver the verdict tomorrow morning after reviewing the witness logs once more.",
+          "embedding_text": "When will you announce the verdict?",
+          "tags": ["trial", "verdict", "schedule"]
+        },
+        {
+          "source_id": "judge_emily_notes",
+          "text": "My notes mention that the balcony gallery was empty except for the bailiff at closing.",
+          "embedding_text": "What do your notes say about the gallery?",
+          "tags": ["trial", "notes"]
+        }
+      ]
+    },
+    {
+      "npc_id": "detective_ron",
+      "preset_dialogue": [
+        "I'm checking the evidence board, maybe ask about the suspects.",
+        "One moment—try chatting about local gossip while I dig into the files.",
+        "Hold tight; I'm cross-referencing last night's patrol logs."
+      ],
+      "anchor_facts": [
+        "He leads the precinct's investigative unit.",
+        "He trusts physical evidence over hearsay.",
+        "He maintains a network of informants in the harbor district.",
+        "He grew up in the warehouse district and knows every dockhand by name."
+      ],
+      "responses": [
+        {
+          "source_id": "detective_ron_harbor",
+          "text": "The harbor cameras caught a shadow slipping into Warehouse 3 just after midnight.",
+          "embedding_text": "Did the harbor cameras see anything suspicious last night?",
+          "tags": ["harbor", "casefile"]
+        },
+        {
+          "source_id": "detective_ron_plan",
+          "text": "Set up on the catwalk above Warehouse 3; you'll get a clear view without being seen.",
+          "embedding_text": "Where should I position myself for the stakeout?",
+          "tags": ["harbor", "strategy", "stakeout"]
+        },
+        {
+          "source_id": "detective_ron_suspects",
+          "text": "Keep an eye on Mira Lane—she's been asking questions about the shipment schedule.",
+          "embedding_text": "Who seems suspicious about the shipment?",
+          "tags": ["suspects", "harbor"]
+        }
+      ]
+    },
+    {
+      "npc_id": "bartender_lucy",
+      "preset_dialogue": [
+        "I'm mixing drinks, but I can spare a moment for gossip.",
+        "Give me a sec—these patrons love their nighttime stories.",
+        "If you're bored, ask about the nightly specials while I finish up."
+      ],
+      "anchor_facts": [
+        "She has run the Foggy Lantern tavern for fifteen years.",
+        "She hears rumors from sailors and night-shift workers.",
+        "She keeps a private ledger of generous tippers."
+      ],
+      "responses": [
+        {
+          "source_id": "bartender_lucy_weather",
+          "text": "Storm's rolling in tonight—dockhands say the waves are already cresting at the breakwater.",
+          "embedding_text": "What's the weather going to be like tonight?",
+          "tags": ["weather", "harbor"]
+        },
+        {
+          "source_id": "bartender_lucy_gossip",
+          "text": "I heard the courier swapped crates with a stranger near Pier 6 just after sundown.",
+          "embedding_text": "Any gossip about the courier?",
+          "tags": ["gossip", "harbor", "courier"]
+        },
+        {
+          "source_id": "bartender_lucy_regulars",
+          "text": "Detective Ron drops by for ginger tea when a case keeps him up all night.",
+          "embedding_text": "Does Detective Ron ever visit your tavern?",
+          "tags": ["npc", "relationships"]
+        }
+      ]
+    }
+  ]
+}
