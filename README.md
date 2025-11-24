@@ -1,4 +1,4 @@
-# AI-Powered 2D Detective Game
+# Redstring: AI-Powered 2D Detective Game
 
 ## Project Overview
 
@@ -21,3 +21,19 @@ The team members are:
 * Nathan Nguyen
 * Faith Rider
 * Elias Weitfle
+* **Advisor:** Jillian Aurisano
+
+## Table of Contents
+1. [User Stories & Design Diagrams](design_diagrams)
+3. [Project Tasks](docs/Tasklist.md) & [Timeline](docs/Effort_Matrix_and_Timeline.pdf)
+4. [ABET Concerns Essay](docs/ABET_Concerns_Essay.pdf)
+5. [PPT Slideshow](docs/Final_Fall_Presentation_of_Work.pdf)
+6. Self-Assessment Essays: [Faith Rider](personal_essay_faith.md), [Nathan Nguyen](personal_essay_nathan.md), [Elias Weitfle](personal_essay_elias.md)
+7. Professional Biographies: [Faith Rider](professional_bio_faith.md), [Nathan Nguyen](professional_bio_nathan.md), [Elias Weitfle](professional_bio_elias.md)
+9. [Budget](README.md)
+
+
+### Budget
+Our team did not incur any expenses during the Fall semester. All development work was completed using open-source tools, university-provided software licenses, and free-tier cloud services, resulting in a total cost of $0 for this term. No hardware, software, or external assets were purchased, and no items were donated.
+
+Looking ahead to next semester, we anticipate a small cost associated with hosting and running the AI components of our game, particularly for cloud compute and possible text-to-speech usage. These costs are expected to remain minimal and will be finalized once the backend infrastructure is fully implemented.
