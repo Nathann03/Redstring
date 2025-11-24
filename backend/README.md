@@ -49,6 +49,7 @@ The orchestrator defaults to a deterministic stub LLM so the tests stay fast and
    python3 -m pip install -r backend/requirements-llm.txt
    ```
 2. Copy `backend/config/local_llm_config.example.json` to `backend/config/local_llm_config.json` and update the `model_path` to point to a GGUF model on disk.
+   - Download a GGUF (Q4_K_M is recommended) model from here: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/README.md
 3. Launch the CLI with the config to verify everything locally (add `--interactive` for a menu, `--log-level DEBUG` for verbose tracing):
    ```bash
    source backend/.venv/bin/activate
