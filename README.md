@@ -28,8 +28,8 @@ The team members are:
 2. [Project Tasks](docs/Tasklist.md) & [Timeline](docs/Effort_Matrix_and_Timeline.pdf)
 3. [ABET Concerns Essay](docs/ABET_Concerns_Essay.pdf)
 4. [PPT Slideshow](docs/Final_Fall_Presentation_of_Work.pdf)
-5. Self-Assessment Essays: [Faith Rider](personal_essay_faith.md), [Nathan Nguyen](personal_essay_nathan.md), [Elias Weitfle](personal_essay_elias.md)
-6. Professional Biographies: [Faith Rider](professional_bio_faith.md), [Nathan Nguyen](professional_bio_nathan.md), [Elias Weitfle](professional_bio_elias.md)
+5. Self-Assessment Essays: [Faith Rider](https://github.com/Nathann03/Redstring/blob/main/docs/homework_essays/Faith%20Rider/personal_essay_faith.md), [Nathan Nguyen](https://github.com/Nathann03/Redstring/blob/main/docs/homework_essays/Nathan%20Nguyen/personal_essay_nathan.md), [Elias Weitfle](https://github.com/Nathann03/Redstring/blob/main/docs/homework_essays/Elias%20Weitfle/personal_essay_elias.md)
+6. Professional Biographies: [Faith Rider](https://github.com/Nathann03/Redstring/blob/main/docs/homework_essays/Faith%20Rider/professional_bio_faith.md), [Nathan Nguyen](https://github.com/Nathann03/Redstring/blob/main/docs/homework_essays/Nathan%20Nguyen/professional_bio_nathan.md), [Elias Weitfle](https://github.com/Nathann03/Redstring/blob/main/docs/homework_essays/Elias%20Weitfle/professional_bio_elias.md)
 7. [Budget](README.md)
 8. [Appendix](docs)
 
