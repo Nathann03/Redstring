@@ -25,12 +25,13 @@ The team members are:
 
 ## Table of Contents
 1. [User Stories & Design Diagrams](design_diagrams)
-3. [Project Tasks](docs/Tasklist.md) & [Timeline](docs/Effort_Matrix_and_Timeline.pdf)
-4. [ABET Concerns Essay](docs/ABET_Concerns_Essay.pdf)
-5. [PPT Slideshow](docs/Final_Fall_Presentation_of_Work.pdf)
-6. Self-Assessment Essays: [Faith Rider](personal_essay_faith.md), [Nathan Nguyen](personal_essay_nathan.md), [Elias Weitfle](personal_essay_elias.md)
-7. Professional Biographies: [Faith Rider](professional_bio_faith.md), [Nathan Nguyen](professional_bio_nathan.md), [Elias Weitfle](professional_bio_elias.md)
-9. [Budget](README.md)
+2. [Project Tasks](docs/Tasklist.md) & [Timeline](docs/Effort_Matrix_and_Timeline.pdf)
+3. [ABET Concerns Essay](docs/ABET_Concerns_Essay.pdf)
+4. [PPT Slideshow](docs/Final_Fall_Presentation_of_Work.pdf)
+5. Self-Assessment Essays: [Faith Rider](personal_essay_faith.md), [Nathan Nguyen](personal_essay_nathan.md), [Elias Weitfle](personal_essay_elias.md)
+6. Professional Biographies: [Faith Rider](professional_bio_faith.md), [Nathan Nguyen](professional_bio_nathan.md), [Elias Weitfle](professional_bio_elias.md)
+7. [Budget](README.md)
+8. [Appendix](docs)
 
 
 ### Budget
