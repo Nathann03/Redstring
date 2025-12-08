@@ -1,0 +1,235 @@
+==============================
+Hybrid Retrieval + RAG + LLM System
+with Warm-Up Fallback + ElevenLabs Turbo TTS
+and Per-Save-File Game State
+==============================
+
+1. Player Interaction
+--------------------
+- Players ask NPCs a question.
+- Player query is sent to the system along with the relevant save file state.
+
+2. Preset Dialogue / Warm-Up Layer (First Fallback)
+---------------------------------------------------
+- Stores short generic dialogue options per NPC, e.g.:
+    "I’m thinking… try asking about the town or weather."
+- Flow:
+  1. Player query arrives.
+  2. Check if LLM instance is active:
+       - No: immediately show preset dialogue + spinner: 
+             "AI model spinning up..."
+       - Yes: continue to Retrieval Layer.
+- Reduces perceived delay and keeps gameplay smooth.
+- Optional: pre-generate audio for these preset lines for instant TTS.
+
+3. Retrieval Layer (Pregenerated Responses)
+------------------------------------------
+- Only invoked if LLM is active.
+- Stored in FAISS / Pinecone / Elasticache as embeddings.
+- Steps:
+  1. Embed player query.
+  2. Search for nearest neighbor in pregenerated responses.
+  3. If similarity > threshold:
+       -> Return pregenerated response instantly (<10 ms)
+  4. If similarity < threshold:
+       -> Check LLM + RAG layer.
+
+4. RAG + LLM Fallback Layer
+---------------------------
+- Models: LLaMA-2-3B int8 or DistilGPT-2 (quantized)
+- Hosting: GPU instance (g4dn.small or g4dn.medium) with autoscaling.
+- Flow:
+  1. Build RAG Prompt:
+       - Fetch relevant facts for the NPC from:
+           a) Save file `game_state` (dynamic session facts)
+           b) Anchor facts / canonical NPC facts (static, shared)
+           c) Retrieved nearest embeddings from vector DB for context
+       - Build prompt ensuring factual consistency and tone
+  2. LLM generates response using RAG-enhanced prompt
+  3. Cache new unusual responses in Elasticache
+- Latency when LLM ready:
+       - g4dn.small: ~70–120 ms
+       - g4dn.medium: ~40–70 ms
+
+5. Caching
+----------
+- Elasticache / Redis stores:
+    - Previously seen unusual queries + LLM responses
+    - Queued queries during LLM spin-up for later processing
+    - Frequently requested NPC lines as pre-generated audio (optional)
+- Avoids repeated LLM and TTS calls for identical queries.
+- Hybrid Retrieval + RAG ensures most queries are answered instantly, while rare/unusual questions hit the LLM.
+
+6. TTS Layer (ElevenLabs Turbo v2.5)
+-------------------------------------
+- Converts LLM text output to speech asynchronously.
+- Latency: ~250–300 ms from request to first audio.
+- Async streaming allows text to appear immediately while audio plays.
+- Spinner shows "AI is speaking" until first audio chunk streams.
+- Optional caching for repeated audio reduces TTS cost and latency.
+
+7. Autoscaling
+--------------
+- Scale GPU instances based on active players / queued fallback requests.
+- Optional always-on instance for baseline low-latency.
+- When new instances spin up:
+    - Warm-up fallback triggers preset dialogue + spinner.
+    - LLM handles queued requests when ready.
+
+8. Hybrid Retrieval + RAG Flow Diagram (Text Version)
+-----------------------------------------------------
+Player Question + Save File State
+      |
+      v
+Is LLM instance active?
+       |
+   +---+---+
+   |       |
+  No       Yes
+   |        |
+Show preset  +----------------------+
+dialogue +  |  Embedding / Retrieval|
+spinner     +----------------------+
+   |        |
+   |--- Hit (similarity ≥ S_exact) ---> Return text (<10ms)
+   | 
+   |--- Fuzzy Match (S_adapt ≤ similarity < S_exact)
+   |           |
+   |           v
+   |     Optional LLM rephrase / annotate
+   |
+   |--- Miss / unusual
+              |
+              v
+        Build RAG Prompt
+              |
+         +-------------------+
+         | Retrieve Facts    |
+         | - From Save File  |
+         | - From NPC Anchors|
+         | - From Vector DB  |
+         +-------------------+
+              |
+              v
+         +------------+
+         |    LLM     |
+         +------------+
+              |
+              v
+         +-----------------+
+         | Cache Response  |
+         +-----------------+
+              |
+       Turbo TTS Enabled?
+              |
+        +-----+-----+
+        |           |
+       Yes          No
+        |           |
+        v           v
+  Send text to    Display text only
+  ElevenLabs
+  Turbo v2.5
+  Async Streaming
+        |
+Generate Voice (~250–300ms)
+        |
+Stream Audio to Player
+        |
+Player Hears NPC Voice
+        |
+[Optional] Show “AI is speaking” Spinner if audio streaming hasn’t finished yet
+
+9. Latency Summary
+-----------------
+| Step                         | Latency (ms)|
+|------------------------------|-------------|
+| Preset Dialogue (LLM offline) | <5         |
+| Retrieval Hit                | <10         |
+| RAG + LLM Generation (g4dn.small)  | 70–120 |
+| RAG + LLM Generation (g4dn.medium) | 40–70  |
+| Turbo v2.5 TTS Generation    | 250–300     |
+| Total perceived delay (LLM + TTS) | ~320–420 |
+| Total perceived delay (preset)    | <5      |
+
+10. Cost Estimates
+-----------------
+- LLM Fallback (g4dn.small): ~$120–$270/month for ~100k queries.
+- Turbo v2.5: ~$50 per 1M characters (scales with usage).
+- Hybrid retrieval + RAG reduces LLM + TTS cost substantially by answering most queries instantly.
+
+11. Per-Save-File Game State Example
+------------------------------------
+Example JSON passed with a query:
+
+{
+  "save_id": "save_01",
+  "player_id": "nathan123",
+  "player_question": "Did anyone see the suspect?",
+  "game_state": {
+    "case_id": "case_01",
+    "npc_states": {
+      "judge_emily": {
+        "found_clues": ["bloody_knife", "torn_note"],
+        "asked_questions": ["where_were_you_last_night"],
+        "suspect_alibis": {"judge_emily": "court_until_9pm"}
+      }
+    },
+    "player_inventory": ["magnifying_glass"],
+    "player_reputation": 0.7
+  }
+}
+
+- Each save file is independent; facts can differ per save file.
+- RAG pulls the correct subset of facts dynamically from the save file and canonical NPC anchors.
+
+12. Judge NPC Example Flow
+--------------------------
+Player Question: "Judge, did anyone leave after the trial?"
+
+1) Preset Dialogue (LLM not spun up):
+   - Show short generic dialogue options:
+     "I’m thinking… try asking about the town or weather."
+   - Spinner shows "AI model spinning up..."
+   - Wait until LLM is ready to continue.
+
+2) Retrieval Layer:
+   - Embedding generated for query.
+   - Vector DB query finds canonical question: 
+     "Did anyone leave after trial?" (similarity 0.92)
+   - S_exact threshold met → return pregenerated text: 
+     "I saw Mr. K leave towards the back exit around 9:05pm."
+   - Elasticache caches this if not already cached.
+
+3) If no exact match:
+   - Build RAG prompt including:
+     FACTS:
+       - Judge Emily, last seen in courtroom until 9pm
+       - Found clues: bloody_knife, torn_note
+       - Asked questions: where_were_you_last_night
+   - Player question appended.
+   - LLM generates answer:
+     "I remember someone leaving, but I didn't see their face clearly; I left to file papers at 9pm."
+   - Post-check verifies facts against `game_state`.
+   - Cache response in Elasticache.
+
+4) TTS Layer:
+   - ElevenLabs Turbo v2.5 converts text to audio asynchronously (~250–300 ms)
+   - Audio streamed to client.
+   - Spinner shows "AI is speaking" until first audio chunk plays.
+
+5) Player hears NPC voice, sees text simultaneously (or preset dialogue if warm-up fallback triggered).
+
+13. Optional Features / Notes
+-----------------------------
+- Player can enable/disable Turbo TTS.
+- Frequently used lines can be cached as pre-generated audio.
+- Spinner enhances UX during TTS generation.
+- Autoscaling ensures performance during player spikes.
+- Warm-up fallback maintains engagement while LLM spins up.
+- Retrieval layer and caching maintain high responsiveness and cost efficiency.
+- RAG ensures NPC responses remain factually consistent and in-character even with multiple concurrent sessions.
+
+14. Cool Links
+--------------
+https://elevenlabs.io/docs/product-guides/voices/voice-library
