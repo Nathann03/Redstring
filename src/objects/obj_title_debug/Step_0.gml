@@ -1,5 +1,4 @@
-if bt1_pressed()
-{
+if (button_pressed(KEY.CONFIRM)) {
 	//forge_stop(music)
 	// forge_free(music)
 	if (selected == 0) {
@@ -30,14 +29,13 @@ if bt1_pressed()
 	}
 	if (selected == 5) {
 		testingInternet = true;
-		request = http_get(get_string("What URL do you want to test?","https://"));
+		requestURL = get_string("What URL do you want to test?","https://");
+		request = http_get(requestURL);
 	}
 }
-if up_pressed()
-{
-	if (selected > 0) selected -= 1
+if (button_pressed(KEY.UP)) {
+	if (selected > 0) selected--;
 }
-if down_pressed()
-{
-	if (selected < optionno-1) selected += 1
+if (button_pressed(KEY.DOWN)) {	
+	if (selected < optionno-1) selected++;
 }

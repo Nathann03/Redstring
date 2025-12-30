@@ -1,30 +1,30 @@
 switch(global.facing) {
 	case 0: sprite_index = spr_atlasd; break;
-	case 1: sprite_index = spr_atlasd; break;
-	case 2: sprite_index = spr_atlasd; break;
-	case 3: sprite_index = spr_atlasd; break;
+	case 1: sprite_index = spr_atlasr; break;
+	case 2: sprite_index = spr_atlasu; break;
+	case 3: sprite_index = spr_atlasl; break;
 }
 
 if (movement) {
 	moving = 0;
 	mx = 0;
 	my = 0;
-	if (down_held()) {
+	if (button_held(KEY.DOWN)) {
 		moving = true;
 		global.facing = 0;
 		my = moveSpeed;
 	}
-	if (right_held()) {
+	if (button_held(KEY.RIGHT)) {
 		moving = true;
 		global.facing = 1;
 		mx = moveSpeed;
 	}
-	if (up_held()) {
+	if (button_held(KEY.UP)) {
 		moving = true;
 		global.facing = 2;
 		my = -moveSpeed;
 	}
-	if (left_held()) {
+	if (button_held(KEY.LEFT)) {
 		moving = true;
 		global.facing = 3;
 		mx = -moveSpeed;
@@ -33,7 +33,7 @@ if (movement) {
 	y += my;
 }
 //check if we're interacting with something
-if (bt1_pressed()) event_user(0);
+if (button_pressed(KEY.CONFIRM)) event_user(0);
 
 if (cutscene) {
 	//don't do anything

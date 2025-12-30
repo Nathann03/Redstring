@@ -9,6 +9,7 @@ optionno = array_length(option);
 selected = 0;
 tiler = 0;
 testingInternet = false;
+requestURL = "";
 request = -1;
 
 //partyindaclubtillyoucantwalknomore = forge_load("music/club.ogg")

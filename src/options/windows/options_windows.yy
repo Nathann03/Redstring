@@ -1,5 +1,5 @@
 {
-  "$GMWindowsOptions":"",
+  "$GMWindowsOptions":"v1",
   "%Name":"Windows",
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":false,
@@ -7,6 +7,7 @@
   "option_windows_company_info":"",
   "option_windows_copyright_info":"Noah Rider / Faith Rider / Nathan Nguyen / Elias Weitfle",
   "option_windows_copy_exe_to_dest":false,
+  "option_windows_d3dswapeffectdiscard":false,
   "option_windows_description_info":"An AI-Powered 2D Detective Game. Capstone project for the University of Cincinnati!",
   "option_windows_disable_sandbox":false,
   "option_windows_display_cursor":true,

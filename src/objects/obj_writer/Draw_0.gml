@@ -1,9 +1,7 @@
 var n, xx, yy;
 xx = writex;
 yy = writey;
-for (n = 1; n < pos+1; n++)
-{
-	
+for (n = 1; n <= pos; n++)  {
 	
 	
 	draw_set_font(textfont);
