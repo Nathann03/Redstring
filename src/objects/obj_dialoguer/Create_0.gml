@@ -1,7 +1,13 @@
-xx = camerax();
-yy = cameray();
+depth = -999;
+createdWriter = false;
+writer = noone;
 
-wx = xx+100;
-wy = yy+200;
+surf = -1;
+surfWidth = 580;
+surfHeight = 2;
 
-writer = instance_create(wx, wy, obj_writer);
+spriteSpeed = 6/60;
+spriteIndex = 0;
+
+goin = false;
+goout = true;

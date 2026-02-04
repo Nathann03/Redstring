@@ -1,5 +1,2 @@
-interact = 2;
-global.txr = 1;
-global.action = 1;
-global.mid = mymid;
-dialoguer = instance_create(0, 0, obj_dialoguer);
+///@description set messages to write
+scr_setmsg("* But the void stared back.", "obj_readable_other_10_0");

@@ -4,7 +4,7 @@ tiler += 2
 //draw_rectangle_solid(110, 70, 130+string_width(option[1]), 85+(18*optionno))
 //draw_set_color(c_black)
 //draw_rectangle_solid(113, 73, 127+string_width(option[1]), 82+(18*optionno))
-draw_set_font(fnt_maintext);
+draw_set_font(fnt_main);
 for (var i = 0; i < optionno; ++i)  {
     if (selected == i) draw_set_color(c_select);
     draw_text(120, 80+(18*i), option[i]);

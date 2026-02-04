@@ -1,6 +1,6 @@
 function scr_start() {
 	// constants
-	#macro VERSION "rd20251216" // rd-year-month-day-revision
+	#macro VERSION "rd20260204" // rd-year-month-day-revision
 	#macro SAVE_FILE_VERSION 1
 	
 	#macro KEY_UP 5
@@ -17,6 +17,7 @@ function scr_start() {
 	global.facing = 0;
 	global.time = 0;
 	global.txr = 1;
+	global.language = "en";
 	
 	global.settings = {
 		audio: {
@@ -57,23 +58,16 @@ function scr_start() {
 		global.inputHeldKB[i] = false;
 	}
 	
-	global.inputMapKB = ds_list_create();
-	ds_list_add(global.inputMapKB, ord("C")); // FRET0
-	ds_list_add(global.inputMapKB, ord("V")); // FRET1
-	ds_list_add(global.inputMapKB, ord("B")); // FRET2
-	ds_list_add(global.inputMapKB, ord("N")); // FRET3
-	ds_list_add(global.inputMapKB, ord("M")); // FRET4
-	ds_list_add(global.inputMapKB, vk_space); // STRUM
-	ds_list_add(global.inputMapKB, vk_up); // UP
-	ds_list_add(global.inputMapKB, vk_down); // DOWN
-	ds_list_add(global.inputMapKB, vk_left); // LEFT
-	ds_list_add(global.inputMapKB, vk_right); // RIGHT
-	ds_list_add(global.inputMapKB, vk_enter); // CONFIRM
-	ds_list_add(global.inputMapKB, vk_shift); // CANCEL
-	ds_list_add(global.inputMapKB, vk_control); // MENU
+	global.inputMapKB[KEY.CONFIRM] = vk_enter;
+	global.inputMapKB[KEY.CANCEL] = vk_shift;
+	global.inputMapKB[KEY.MENU] = vk_control;
+	global.inputMapKB[KEY.UP] = vk_up;
+	global.inputMapKB[KEY.DOWN] = vk_down;
+	global.inputMapKB[KEY.LEFT] = vk_left;
+	global.inputMapKB[KEY.RIGHT] = vk_right;
 	
 	global.debug = true;
 	
 	draw_set_color(c_white);
-	draw_set_font(fnt_maintext);
+	draw_set_font(fnt_main);
 } 

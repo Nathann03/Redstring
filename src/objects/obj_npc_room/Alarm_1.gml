@@ -1,3 +1,0 @@
-if (room == testroom) {
-	
-}

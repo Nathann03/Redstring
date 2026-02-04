@@ -5,7 +5,7 @@ if (global.debug) {
     //draw_text(x,y-30,"x: " + string(x));
     //draw_text(x,y-20,"y: " + string(y));
     //draw_text(x,y-10,"a: " + string(global.action));
-    draw_set_font(fnt_maintext);
+    draw_set_font(fnt_main);
     if (button_held(KEY.CONFIRM)) {
 		draw_set_color(make_color_rgb(98,0,0));
 		draw_rectangle(bbox_left, bbox_bottom, bbox_right, bbox_bottom, true);

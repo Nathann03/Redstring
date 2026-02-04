@@ -1,7 +1,7 @@
 {
   "$GMFont":"",
-  "%Name":"fnt_maintext",
-  "AntiAlias":0,
+  "%Name":"fnt_main",
+  "AntiAlias":1,
   "applyKerning":0,
   "ascender":27,
   "ascenderOffset":0,
@@ -107,7 +107,7 @@
     "124":{"character":124,"h":33,"offset":0,"shift":4,"w":2,"x":102,"y":37,},
     "125":{"character":125,"h":33,"offset":0,"shift":10,"w":8,"x":92,"y":37,},
     "126":{"character":126,"h":33,"offset":0,"shift":16,"w":14,"x":22,"y":177,},
-    "9647":{"character":9647,"h":33,"offset":3,"shift":16,"w":9,"x":38,"y":177,},
+    "9647":{"character":9647,"h":33,"offset":3,"shift":16,"w":10,"x":38,"y":177,},
   },
   "hinting":0,
   "includeTTF":false,
@@ -261,7 +261,7 @@
   "last":0,
   "lineHeight":33,
   "maintainGms1Font":false,
-  "name":"fnt_maintext",
+  "name":"fnt_main",
   "parent":{
     "name":"Fonts",
     "path":"folders/Fonts.yy",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"draw_text_center",
+  "%Name":"winwin_extras",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"draw_text_center",
+  "name":"winwin_extras",
   "parent":{
-    "name":"QOL",
-    "path":"folders/Scripts/Development Tools/QOL.yy",
+    "name":"Extensions",
+    "path":"folders/Extensions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

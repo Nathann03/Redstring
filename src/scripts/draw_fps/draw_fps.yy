@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"draw_fps",
   "parent":{
-    "name":"Development Tools",
-    "path":"folders/Scripts/Development Tools.yy",
+    "name":"QOL",
+    "path":"folders/Scripts/Development Tools/QOL.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
