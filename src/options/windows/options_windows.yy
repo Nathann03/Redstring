@@ -11,7 +11,7 @@
   "option_windows_description_info":"An AI-Powered 2D Detective Game. Capstone project for the University of Cincinnati!",
   "option_windows_disable_sandbox":false,
   "option_windows_display_cursor":true,
-  "option_windows_display_name":"RedString",
+  "option_windows_display_name":"Redstring",
   "option_windows_enable_steam":false,
   "option_windows_executable_name":"redstring.exe",
   "option_windows_icon":"${base_options_dir}/windows/icons/icon.ico",

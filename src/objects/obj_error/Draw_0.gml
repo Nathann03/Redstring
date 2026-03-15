@@ -23,7 +23,6 @@ if (button_pressed(KEY.CONFIRM)) {
 			i++;
 		}
 	}
-	global.playingsong.free();
 	//print("params: " + string(params));
 		
 	game_change(".", params);

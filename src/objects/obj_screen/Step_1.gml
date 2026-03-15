@@ -1,17 +1,18 @@
-#region Input
 //if the debug console is active, don't accept input. since ENTER is one of the interact keys, you can accidently press that while entering a command.
 if (instance_exists(obj_debugination)) {if (obj_debugination.consoleActive) return;}
-for (var i = 0; i < KEY.COUNT; ++i) {
-	global.inputPressedKB[i] = keyboard_check_pressed(global.inputMapKB[i]);
-	global.inputHeldKB[i] = keyboard_check_direct(global.inputMapKB[i]);
+
+#region Input Manager
+for (var i = 0; i < KEY.COUNT; i++) {
+	global.inputPressed[i] = keyboard_check_pressed(global.inputMapKB[i]);
+	global.inputHeld[i] = keyboard_check_direct(global.inputMapKB[i]);
 }
-global.inputPressedKB[KEY.CONFIRM] |= keyboard_check_pressed(ord("Z"));
-global.inputHeldKB[KEY.CONFIRM] |= keyboard_check_direct(ord("Z"));
-global.inputPressedKB[KEY.CANCEL] |= keyboard_check_pressed(ord("X"));
-global.inputHeldKB[KEY.CANCEL] |= keyboard_check_direct(ord("X"));
-global.inputPressedKB[KEY.MENU] |= keyboard_check_pressed(ord("C"));
-global.inputHeldKB[KEY.MENU] |= keyboard_check_direct(ord("C"));
-#endregion Input
+global.inputPressed[KEY.CONFIRM] |= keyboard_check_pressed(ord("Z"));
+global.inputHeld[KEY.CONFIRM] |= keyboard_check_direct(ord("Z"));
+global.inputPressed[KEY.CANCEL] |= keyboard_check_pressed(ord("X"));
+global.inputHeld[KEY.CANCEL] |= keyboard_check_direct(ord("X"));
+global.inputPressed[KEY.MENU] |= keyboard_check_pressed(ord("C"));
+global.inputHeld[KEY.MENU] |= keyboard_check_direct(ord("C"));
+#endregion Input Manager
 
 #region Debug
 if (global.debug) {

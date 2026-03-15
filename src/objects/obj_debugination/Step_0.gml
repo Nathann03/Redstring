@@ -29,7 +29,9 @@ if (consoleActive) {
 	
 	if (keyboard_check_pressed(vk_enter) && input != "") {
 		var _parts = string_split(input, " ");
+		var arg = _parts;
 		var _command = string_lower(_parts[0]);
+		var _len = array_length(_parts)-1; //subtract 1 to exclude the command
 		printf("> {:1}", input);
 		input = "";
 		
@@ -43,6 +45,7 @@ if (consoleActive) {
 				print("RESET: restart the game");
 				print("CREDITS: view who made the game");
 				print("PING: ping a website to test internet connection");
+				print("GLOBAL: Set a global value");
 				print("CLS: clear the console");
 			} else if (_helpCommand == "quit") {
 				print("QUIT: quit the game using gamemaker's built-in game_end() function.");
@@ -54,7 +57,7 @@ if (consoleActive) {
 				print("CREDITS: lists everybody who worked on this game!");
 				print("ARGUMENTS: <  >");
 			} else if (_helpCommand == "ping") {
-				print("CLS: ping a certain website to test internet connection.");
+				print("PING: ping a certain website to test internet connection.");
 				print("ARGUMENTS: < websiteURL >");
 			} else if (_helpCommand == "cls") {
 				print("CLS: simply clears the console window.");
@@ -67,6 +70,10 @@ if (consoleActive) {
 		} else if (_command == "ping") {
 			httpReqURL = _parts[1];
 			if (!string_starts_with(httpReqURL, "https://")) {
+				if (string_starts_with(httpReqURL, "https://")) {
+					printf("Please use HTTPS!");
+					return;
+				}
 				httpReqURL = "https://" + httpReqURL;
 			}
 			httpRequest = http_get(httpReqURL);
@@ -81,6 +88,17 @@ if (consoleActive) {
 			print("Extra Frontend Programming            Noah Rider");
 			print("2025/2026 Capstone Project");
 			print("Thanks for playing!");
+		} else if (_command == "global") {
+			if (_len > 2) {
+				print("Usage: global varname value");
+				return;
+			}
+			if (!variable_global_exists(arg[1])) {
+				printf("Global variable \"{:1}\" not found.", string_upper(arg[1]));
+				return;
+			}
+			variable_global_set(arg[1], arg[2]);
+			printf("global.{:1} = {:2}", arg[1], arg[2]);
 		} else if (_command == "cls") {
 			d_Message = [];
 		} else {
