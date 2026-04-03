@@ -1,12 +1,11 @@
-"""Convenience exports for the hybrid retrieval demo package."""
+"""Exports for the RedString dialogue API package."""
 
-from .core.models import PlayerQuery
-from .pipeline.factory import build_demo_orchestrator, build_llama_orchestrator
-from .services.llm import LlamaGenerationConfig
+from .core.models import DialogueRequest, GameState, LlamaGenerationConfig
+from .pipeline.factory import build_dialogue_router
 
 __all__ = [
-    "PlayerQuery",
-    "build_demo_orchestrator",
-    "build_llama_orchestrator",
+    "DialogueRequest",
+    "GameState",
     "LlamaGenerationConfig",
+    "build_dialogue_router",
 ]

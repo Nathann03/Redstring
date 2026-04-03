@@ -1,97 +1,129 @@
 from __future__ import annotations
 
-from redstring_demo.core.models import PlayerQuery
-from redstring_demo.pipeline.factory import build_demo_orchestrator
+import pytest
+from fastapi import HTTPException
+from starlette.requests import Request
+
+from redstring_demo.api import create_app
+from redstring_demo.config import Settings
+from redstring_demo.core.models import DialogueRequest, GameState
+from redstring_demo.pipeline.factory import build_dialogue_router
+from redstring_demo.security import enforce_access
 
 
-SAMPLE_GAME_STATE = {
-    "case_id": "case_01",
-    "npc_states": {
-        "judge_emily": {
-            "found_clues": ["bloody_knife", "torn_note"],
-            "asked_questions": ["where_were_you_last_night"],
-            "suspect_alibis": {"judge_emily": "court_until_9pm"},
-        },
-        "detective_ron": {
-            "found_clues": ["harbor_ticket"],
-            "asked_questions": [],
-            "suspect_alibis": {},
-        },
-    },
-    "player_inventory": ["magnifying_glass"],
-    "player_reputation": 0.7,
-}
-
-
-def make_query(question: str, npc_id: str = "judge_emily") -> PlayerQuery:
-    return PlayerQuery(
-        save_id="save_01",
-        player_id="player_123",
-        npc_id=npc_id,
-        player_question=question,
-        game_state=SAMPLE_GAME_STATE,
+def _settings() -> Settings:
+    return Settings(
+        secret_key="test-secret",
+        character_file=_path("backend/character_info.txt"),
+        dialogue_file=_path("backend/data/npc_dialogue.json"),
+        llm_config_path=None,
+        warm_start=True,
     )
 
 
-def test_warmup_fallback_enqueues_and_returns_preset():
-    orchestrator, llm = build_demo_orchestrator()
-    query = make_query("Did anyone leave after the trial?")
+def _path(relative: str):
+    from pathlib import Path
 
-    result = orchestrator.handle_query(query, tts_enabled=False)
+    return Path(__file__).resolve().parents[2] / relative
 
-    assert result.source == "preset_dialogue"
-    assert result.warmup is not None
-    assert not result.warmup.is_llm_ready
-    assert result.warmup.queued
-    assert orchestrator.queued_query_count() == 1
-    assert result.spinner_message == "AI model spinning up..."
 
+def _character(character_id: str):
+    router, _, dataset = build_dialogue_router(
+        character_path=_path("backend/character_info.txt"),
+        dialogue_path=_path("backend/data/npc_dialogue.json"),
+    )
+    return dataset.get(character_id)
+
+
+def test_retrieval_hit_returns_structured_response():
+    router, llm, dataset = build_dialogue_router(
+        character_path=_path("backend/character_info.txt"),
+        dialogue_path=_path("backend/data/npc_dialogue.json"),
+    )
     llm.spin_up()
-    processed = orchestrator.process_queued_queries(tts_enabled=False)
+    request = DialogueRequest(
+        character_info=dataset.get("james_okoye"),
+        player_question="What does this timed test prove?",
+        game_state=GameState(found_clues=["EVID_09"], asked_questions=[], npc_id="james_okoye"),
+        evidence_id="EVID_09",
+    )
 
-    assert len(processed) == 1
-    processed_result = processed[0]
-    assert processed_result.source == "retrieval_exact"
-    assert processed_result.audio is None
+    result = router.route(request)
+
+    assert result.route == "retrieval"
+    assert "timed water quality tests" in result.response.lower()
+    assert result.clues_unlocked == []
 
 
-def test_retrieval_fuzzy_hit_triggers_rephrase():
-    orchestrator, llm = build_demo_orchestrator()
+def test_llm_fallback_stays_grounded_and_filters_existing_clues():
+    router, llm, dataset = build_dialogue_router(
+        character_path=_path("backend/character_info.txt"),
+        dialogue_path=_path("backend/data/npc_dialogue.json"),
+    )
     llm.spin_up()
-    query = make_query("Did anyone sneak out after the trial?")
+    request = DialogueRequest(
+        character_info=dataset.get("catch_wallace"),
+        player_question="Why were you so upset about Morgan's research?",
+        game_state=GameState(found_clues=["EVID_08"], asked_questions=[], npc_id="catch_wallace"),
+    )
 
-    result = orchestrator.handle_query(query, tts_enabled=False)
+    result = router.route(request)
 
-    assert result.source == "retrieval_fuzzy"
-    assert "closest match" in result.text
-    assert result.similarity is not None and result.similarity >= 0.7
+    assert result.route == "llm"
+    assert "morgan" in result.response.lower() or "fishing" in result.response.lower() or "business" in result.response.lower()
+    assert "killer" not in result.response.lower() or "not" in result.response.lower()
+    assert result.clues_unlocked == []
 
 
-def test_rag_generation_on_miss_and_caching_behaviour():
-    orchestrator, llm = build_demo_orchestrator()
+def test_confession_override_requires_all_trigger_clues():
+    router, llm, dataset = build_dialogue_router(
+        character_path=_path("backend/character_info.txt"),
+        dialogue_path=_path("backend/data/npc_dialogue.json"),
+    )
     llm.spin_up()
-    question = "What strategy should I use on the harbor stakeout?"
-    query = make_query(question, npc_id="detective_ron")
+    request = DialogueRequest(
+        character_info=dataset.get("yuki_tanaka"),
+        player_question="Did you kill Morgan?",
+        game_state=GameState(
+            found_clues=["EVID_02", "EVID_07", "EVID_08", "EVID_09", "EVID_10", "EVID_11"],
+            asked_questions=[],
+            npc_id="yuki_tanaka",
+        ),
+    )
 
-    first = orchestrator.handle_query(query, tts_enabled=False)
-    assert first.source == "llm_rag"
-    assert "harbor" in first.text.lower()
-    assert "magnifying_glass" in first.text
-    assert not first.cached
+    result = router.route(request)
 
-    second = orchestrator.handle_query(query, tts_enabled=False)
-    assert second.cached
-    assert second.source == "llm_rag"
-    assert second.audio is None
-    assert second.spinner_message is None
+    assert result.route == "confession"
+    assert result.confession is True
+    assert "removed the problem" in result.response.lower()
 
 
-def test_tts_can_be_disabled():
-    orchestrator, llm = build_demo_orchestrator()
-    llm.spin_up()
-    query = make_query("Did anyone leave after the trial?")
+def test_api_rejects_missing_bearer_token():
+    scope = {
+        "type": "http",
+        "method": "POST",
+        "path": "/dialogue",
+        "headers": [],
+        "client": ("203.0.113.10", 1234),
+    }
+    request = Request(scope)
 
-    result = orchestrator.handle_query(query, tts_enabled=False)
+    with pytest.raises(HTTPException) as exc:
+        enforce_access(request, _settings(), None)
 
-    assert result.audio is None
-    assert result.spinner_message is None
+    assert exc.value.status_code == 401
+
+
+def test_api_contract_is_registered():
+    app = create_app(_settings())
+    schema = app.openapi()
+
+    assert "/dialogue" in schema["paths"]
+    assert "post" in schema["paths"]["/dialogue"]
+    body_schema = schema["components"]["schemas"]["DialogueRequestPayload"]
+    assert "npc_id" in body_schema["properties"]
+    assert "evidence_id" in body_schema["properties"]
+    assert "/warmup" in schema["paths"]
+    assert "post" in schema["paths"]["/warmup"]
+    assert "/health" in schema["paths"]
+    assert "get" in schema["paths"]["/health"]
