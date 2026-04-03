@@ -9,6 +9,7 @@ from redstring_demo.config import Settings
 from redstring_demo.core.models import DialogueRequest, GameState
 from redstring_demo.pipeline.factory import build_dialogue_router
 from redstring_demo.security import enforce_access
+from redstring_demo.services import llm_service
 
 
 def _settings() -> Settings:
@@ -18,6 +19,8 @@ def _settings() -> Settings:
         dialogue_file=_path("backend/data/npc_dialogue.json"),
         llm_config_path=None,
         warm_start=True,
+        gemini_api_key="",
+        gemini_model="gemini-3-flash-preview",
     )
 
 
@@ -98,6 +101,61 @@ def test_confession_override_requires_all_trigger_clues():
     assert "removed the problem" in result.response.lower()
 
 
+def test_auto_backend_uses_gemini_when_local_llm_is_not_ready(monkeypatch):
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {
+                "candidates": [
+                    {
+                        "content": {
+                            "parts": [
+                                {
+                                    "text": '{"response":"I stayed in the equipment room and watched the timed test the whole time.","clues_unlocked":[]}'
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+    captured = {}
+
+    def fake_post(url, params=None, headers=None, json=None, timeout=None):
+        captured["url"] = url
+        captured["params"] = params
+        captured["json"] = json
+        return FakeResponse()
+
+    monkeypatch.setattr(llm_service.requests, "post", fake_post)
+
+    router, llm, dataset = build_dialogue_router(
+        character_path=_path("backend/character_info.txt"),
+        dialogue_path=_path("backend/data/npc_dialogue.json"),
+        gemini_api_key="test-gemini-key",
+        gemini_model="gemini-3-flash-preview",
+    )
+    request = DialogueRequest(
+        character_info=dataset.get("james_okoye"),
+        player_question="Why do you keep hiding behind technical jargon when I question your motives?",
+        game_state=GameState(found_clues=["EVID_09"], asked_questions=["who_are_you"], npc_id="james_okoye"),
+        generation_backend="auto",
+    )
+
+    result = router.route(request)
+
+    assert llm.is_ready() is False
+    assert result.route == "gemini"
+    assert "timed test" in result.response.lower()
+    assert captured["params"] == {"key": "test-gemini-key"}
+    prompt_blob = str(captured["json"])
+    assert "Morgan Blackwell" in prompt_blob
+    assert "Dr. James Finnegan" in prompt_blob
+    assert "EVID_09" in prompt_blob
+
+
 def test_api_rejects_missing_bearer_token():
     scope = {
         "type": "http",
@@ -123,6 +181,7 @@ def test_api_contract_is_registered():
     body_schema = schema["components"]["schemas"]["DialogueRequestPayload"]
     assert "npc_id" in body_schema["properties"]
     assert "evidence_id" in body_schema["properties"]
+    assert "generation_backend" in body_schema["properties"]
     assert "/warmup" in schema["paths"]
     assert "post" in schema["paths"]["/warmup"]
     assert "/health" in schema["paths"]

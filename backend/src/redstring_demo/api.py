@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
 from pydantic import BaseModel, Field, model_validator
@@ -53,6 +53,7 @@ class DialogueRequestPayload(BaseModel):
     character_info: Optional[CharacterInfoPayload] = None
     player_question: str
     evidence_id: Optional[str] = None
+    generation_backend: Optional[Literal["auto", "local", "gemini"]] = None
     game_state: GameStatePayload = Field(default_factory=GameStatePayload)
 
     @model_validator(mode="after")
@@ -85,6 +86,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return {
             "status": "ok",
             "llm_ready": llm_service.is_ready(),
+            "gemini_available": bool(resolved_settings.gemini_api_key),
             "known_characters": sorted(character_dataset.records.keys()),
         }
 
@@ -111,6 +113,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 npc_id=payload.game_state.npc_id or character_info.character_id,
             ),
             evidence_id=payload.evidence_id,
+            generation_backend=payload.generation_backend,
         )
         result = router.route(request_model)
         logger.info("request_complete route=%s latency_ms=%.2f", result.route, result.latency_ms)
@@ -128,6 +131,8 @@ def _build_runtime(settings: Settings):
         character_path=settings.character_file,
         dialogue_path=settings.dialogue_file,
         llm_config=llm_config,
+        gemini_api_key=settings.gemini_api_key,
+        gemini_model=settings.gemini_model,
     )
     if settings.warm_start:
         llm_service.spin_up()

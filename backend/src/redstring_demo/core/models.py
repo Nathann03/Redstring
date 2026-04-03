@@ -52,6 +52,7 @@ class DialogueRequest:
     player_question: str
     game_state: GameState
     evidence_id: Optional[str] = None
+    generation_backend: Optional[str] = None
 
 
 @dataclass(frozen=True)

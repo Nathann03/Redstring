@@ -15,6 +15,8 @@ class Settings:
     dialogue_file: Path
     llm_config_path: Optional[Path]
     warm_start: bool
+    gemini_api_key: str
+    gemini_model: str
 
 
 def load_settings() -> Settings:
@@ -26,4 +28,6 @@ def load_settings() -> Settings:
         dialogue_file=Path(os.getenv("REDSTRING_DIALOGUE_FILE", "backend/data/npc_dialogue.json")),
         llm_config_path=Path(llm_config_raw) if llm_config_raw else None,
         warm_start=os.getenv("REDSTRING_WARM_START", "true").lower() in {"1", "true", "yes"},
+        gemini_api_key=os.getenv("REDSTRING_GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", "")).strip(),
+        gemini_model=os.getenv("REDSTRING_GEMINI_MODEL", "gemini-3-flash-preview").strip(),
     )

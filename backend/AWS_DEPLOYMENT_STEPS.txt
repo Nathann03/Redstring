@@ -50,6 +50,8 @@ Set at minimum:
 - REDSTRING_HF_REPO_ID=bartowski/Llama-3.2-3B-Instruct-GGUF
 - REDSTRING_HF_FILENAME=Llama-3.2-3B-Instruct-Q4_K_M.gguf
 - REDSTRING_WARM_START=true
+- REDSTRING_GEMINI_API_KEY=<your_gemini_api_key>
+- REDSTRING_GEMINI_MODEL=gemini-3-flash-preview
 
 Optional alternatives:
 - REDSTRING_MODEL_S3_URI=s3://bucket/path/model.gguf
@@ -64,6 +66,10 @@ sudo APP_ROOT=/opt/redstring /opt/redstring/backend/deploy/install_on_ec2.sh
 Step 5: Verify
 --------------
 curl http://<PUBLIC_IP>:8000/health
+
+Expected health payload now includes:
+- llm_ready
+- gemini_available
 
 Warm the model explicitly:
 
@@ -80,6 +86,11 @@ curl \
   -d @payload.json \
   http://<PUBLIC_IP>:8000/dialogue
 
+Example payload options:
+- `generation_backend: "auto"` uses retrieval first, then Gemini on misses when the local model is not ready and Gemini is configured.
+- `generation_backend: "local"` forces local generation on misses.
+- `generation_backend: "gemini"` bypasses local generation on misses and uses Gemini instead.
+
 Step 6: Service operations
 --------------------------
 sudo systemctl status redstring-dialogue
@@ -89,7 +100,7 @@ sudo systemctl restart redstring-dialogue
 How the API response shape is guaranteed
 ----------------------------------------
 1. The prompt asks for JSON only.
-2. The backend parses the model output.
+2. The backend parses both llama.cpp and Gemini model output.
 3. It accepts output only if the JSON object has exactly:
    - response
    - clues_unlocked
@@ -102,3 +113,4 @@ Notes
 2. The API no longer uses an app-layer IP allowlist.
 3. Security is bearer-token based.
 4. The game should call POST /warmup on startup if /health reports llm_ready=false.
+5. The backend can now use Gemini as a remote generation path when local inference is unavailable or when the request explicitly sets `generation_backend` to `gemini`.

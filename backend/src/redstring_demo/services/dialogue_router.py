@@ -10,7 +10,7 @@ from typing import Iterable, List
 
 from ..core.models import CharacterInfo, DialogueRequest, DialogueResponse, GeneratedDialogue, RetrievalHitType
 from .clue_extractor import ClueExtractor
-from .llm_service import LocalLLMService
+from .llm_service import GeminiLLMService, LocalLLMService
 from .retrieval_engine import RetrievalEngine
 from .validator import DialogueValidator
 
@@ -24,6 +24,7 @@ class DialogueRouter:
 
     retrieval_engine: RetrievalEngine
     llm_service: LocalLLMService
+    gemini_service: GeminiLLMService
     clue_extractor: ClueExtractor
     validator: DialogueValidator
 
@@ -63,12 +64,8 @@ class DialogueRouter:
                 latency_ms=latency_ms,
             )
 
-        suggested_clues = self.clue_extractor.extract(
-            character,
-            request.player_question,
-            request.game_state,
-        )
-        generated = self.llm_service.generate(request, suggested_clues=suggested_clues)
+        suggested_clues = self.clue_extractor.extract(character, request.player_question, request.game_state)
+        generated, route_name = self._generate_dialogue(request, suggested_clues)
         fallback_text = self.llm_service.generate(request, suggested_clues=[]).response
         response_text = self.validator.sanitize_response(
             generated.response,
@@ -81,16 +78,34 @@ class DialogueRouter:
             generated.clues_unlocked,
         )
         latency_ms = (time.perf_counter() - started) * 1000
-        logger.info("route=llm character_id=%s latency_ms=%.2f", character.character_id, latency_ms)
+        logger.info("route=%s character_id=%s latency_ms=%.2f", route_name, character.character_id, latency_ms)
         return DialogueResponse(
             response=response_text,
             clues_unlocked=clues,
-            route="llm",
+            route=route_name,
             latency_ms=latency_ms,
         )
 
     def handle_query(self, request: DialogueRequest) -> DialogueResponse:
         return self.route(request)
+
+    def _generate_dialogue(self, request: DialogueRequest, suggested_clues: List[str]) -> tuple[GeneratedDialogue, str]:
+        backend = (request.generation_backend or "auto").lower()
+
+        if backend == "gemini":
+            generated = self.gemini_service.generate(request, suggested_clues=suggested_clues)
+            return generated, "gemini"
+
+        if backend == "local":
+            generated = self.llm_service.generate(request, suggested_clues=suggested_clues)
+            return generated, "llm"
+
+        if self.gemini_service.is_available() and not self.llm_service.is_ready():
+            generated = self.gemini_service.generate(request, suggested_clues=suggested_clues)
+            return generated, "gemini"
+
+        generated = self.llm_service.generate(request, suggested_clues=suggested_clues)
+        return generated, "llm"
 
     @staticmethod
     def _confession_if_ready(character_info: CharacterInfo, found_clues: Iterable[str]) -> str | None:

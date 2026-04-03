@@ -9,7 +9,13 @@
 ## Request Contract
 - `POST /warmup` exists for client-side model preload.
 - `character_info`
+- `npc_id`
 - `player_question`
+- `evidence_id`
+- `generation_backend`
+  - `auto`
+  - `local`
+  - `gemini`
 - `game_state`
   - `found_clues`
   - `asked_questions`
@@ -23,6 +29,7 @@ The final API response is always shaped by the FastAPI response model, not by ra
 
 ## Output Enforcement
 - The llama prompt requests JSON only.
+- The Gemini prompt also requests strict JSON only.
 - Parsed model output is accepted only if it is a JSON object with exactly:
   - `response`
   - `clues_unlocked`
@@ -31,9 +38,9 @@ The final API response is always shaped by the FastAPI response model, not by ra
 
 ## Active Architecture
 - `redstring_demo/api.py`: FastAPI app and typed response models, including `/warmup`.
-- `redstring_demo/services/dialogue_router.py`: confession check, retrieval-first route, LLM fallback.
+- `redstring_demo/services/dialogue_router.py`: confession check, retrieval-first route, local/Gemini generation selection.
 - `redstring_demo/services/retrieval_engine.py`: semantic retrieval.
-- `redstring_demo/services/llm_service.py`: deterministic fallback plus optional llama.cpp generation.
+- `redstring_demo/services/llm_service.py`: deterministic fallback plus optional llama.cpp and Gemini generation.
 - `redstring_demo/services/clue_extractor.py`: clue candidate selection.
 - `redstring_demo/services/validator.py`: response and clue validation.
 - `redstring_demo/bootstrap_model.py`: GGUF downloader.

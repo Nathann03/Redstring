@@ -16,6 +16,7 @@ Request body:
   "npc_id": "james_okoye",
   "player_question": "Where were you during the murder window?",
   "evidence_id": "EVID_09",
+  "generation_backend": "auto",
   "game_state": {
     "found_clues": ["EVID_09"],
     "asked_questions": ["who_are_you"],
@@ -36,6 +37,9 @@ Response:
 Notes:
 - `npc_id` is the preferred contract. The server loads the matching NPC record from [`backend/character_info.txt`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/character_info.txt).
 - `evidence_id` should be the map evidence the player is asking about, such as `EVID_02` for the wrench or `EVID_11` for Yuki's damp jacket.
+- `generation_backend` accepts `auto`, `local`, or `gemini`.
+- `auto` uses retrieval first, then prefers Gemini when the local llama service is not ready and Gemini is configured, otherwise it uses the local backend.
+- `gemini` bypasses local generation on retrieval misses and sends the request to the Gemini API instead.
 - The legacy `character_info` payload is still accepted for compatibility, but new clients should not send it.
 
 `GET /health`
@@ -46,6 +50,7 @@ Returns:
 {
   "status": "ok",
   "llm_ready": true,
+  "gemini_available": true,
   "known_characters": ["catch_wallace", "james_okoye", "riley_chen", "yuki_tanaka"]
 }
 ```
@@ -188,6 +193,8 @@ This is cleaner than sending a fake dialogue request just to force model load.
 - `REDSTRING_CHARACTER_FILE`
 - `REDSTRING_DIALOGUE_FILE`
 - `REDSTRING_LLM_CONFIG`
+- `REDSTRING_GEMINI_API_KEY`
+- `REDSTRING_GEMINI_MODEL`
 - `REDSTRING_HF_REPO_ID`
 - `REDSTRING_HF_FILENAME`
 - `HF_TOKEN`

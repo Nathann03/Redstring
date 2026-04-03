@@ -11,9 +11,11 @@ Input
 -----
 The game client sends:
 
-1. character_info
+1. npc_id or character_info
 2. player_question
-3. game_state
+3. evidence_id
+4. generation_backend
+5. game_state
    - found_clues
    - asked_questions
    - npc_id
@@ -32,7 +34,10 @@ Core Flow
 1. Authenticate request with Bearer token.
 2. Check confession trigger conditions.
 3. Attempt semantic retrieval over pregenerated dialogue.
-4. If retrieval misses, fall back to local LLM generation.
+4. If retrieval misses, choose a generation backend:
+   - local llama.cpp generation
+   - Gemini API generation
+   - deterministic fallback if model output is invalid or no model backend is available
 5. Validate and sanitize response.
 6. Filter clues so only legal evidence IDs survive.
 7. Return typed API response.
@@ -97,3 +102,10 @@ Requests are protected with:
 
 The API is network-open by default at the infrastructure layer.
 Security is handled by the bearer token.
+
+Remote Generation Option
+------------------------
+If REDSTRING_GEMINI_API_KEY is configured, the backend can use Gemini as the
+generation backend when:
+- the request sets generation_backend=gemini
+- or generation_backend=auto and the local model has not spun up yet
