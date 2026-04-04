@@ -1,37 +1,57 @@
-# Codex Backend Overview
+# RedString Dialogue API Backend
 
-## Purpose
-- Local prototype of the hybrid Retrieval + RAG + LLM dialogue pipeline.
-- Designed to serve NPC dialogue with warm-up fallbacks, cached retrieval hits, and llama.cpp RAG fallback.
-- All data stored in JSON (`backend/data/npc_dialogue.json`); no paid APIs required.
+## Current Scope
+- Standalone NPC dialogue API only.
+- No ElevenLabs or TTS integration.
+- No app-layer IP allowlist.
+- Bearer token auth only.
 
-## Key Components
-- `redstring_demo/core`: dataclasses and embeddings.
-- `redstring_demo/data`: JSON loader + in-memory vector store.
-- `redstring_demo/services`: warm-up queue, retrieval, RAG builder, LLM stubs / llama.cpp wrapper, TTS stub, cache.
-- `redstring_demo/pipeline`: orchestrator + factory wiring all layers.
-- `redstring_demo/cli`: interactive CLI demo; supports stub or llama-backed runs.
+## Request Contract
+- `POST /warmup` exists for client-side model preload.
+- `character_info`
+- `npc_id`
+- `player_question`
+- `evidence_id`
+- `generation_backend`
+  - `auto`
+  - `local`
+  - `gemini`
+- `game_state`
+  - `found_clues`
+  - `asked_questions`
+  - `npc_id`
 
-## Typical Flow
-1. Player question + save state packaged into `PlayerQuery`.
-2. Warm-up manager decides whether to serve preset dialogue while LLM loads.
-3. Vector search checks pregenerated responses (exact/fuzzy hits).
-4. Misses drop to RAG builder → LLM (stub or llama) → optional caching + TTS stub.
-5. Orchestrator returns `PipelineOutput` with metadata (source, similarity, latency).
+## Response Contract
+- `response`
+- `clues_unlocked`
 
-## Running locally
-```
-python3 -m venv backend/.venv
-source backend/.venv/bin/activate
-python3 -m pip install --upgrade pip
-python3 -m pip install -r backend/requirements.txt
-```
-- Tests: `TMPDIR=$(pwd)/backend/.tmp python3 -m pytest backend/tests -q --capture=no`
-- Stub CLI: `PYTHONPATH=backend/src python3 -m redstring_demo.cli.demo_runner --interactive`
-- LLaMA CLI: install `backend/requirements-llm.txt`, copy & edit `backend/config/local_llm_config.json`, run `PYTHONPATH=backend/src python3 -m redstring_demo.cli.demo_runner --llama-config backend/config/local_llm_config.json --interactive`
+The final API response is always shaped by the FastAPI response model, not by raw model output.
 
-## Notes
-- Logging: pass `--log-level DEBUG` to the CLI to see warm-up, retrieval, RAG, and LLM traces.
-- LLaMA warm start prints `Local LLaMA model ready in …s` once per session; keep the process alive for instant retrieval hits.
-- TTS stub exists (`--enable-tts`) but defaults off for demos.
+## Output Enforcement
+- The llama prompt requests JSON only.
+- The Gemini prompt also requests strict JSON only.
+- Parsed model output is accepted only if it is a JSON object with exactly:
+  - `response`
+  - `clues_unlocked`
+- If parsing fails or extra keys appear, the service falls back to the deterministic grounded generator.
+- Clue IDs are then filtered against `character_info.evidence_knowledge`.
 
+## Active Architecture
+- `redstring_demo/api.py`: FastAPI app and typed response models, including `/warmup`.
+- `redstring_demo/services/dialogue_router.py`: confession check, retrieval-first route, local/Gemini generation selection.
+- `redstring_demo/services/retrieval_engine.py`: semantic retrieval.
+- `redstring_demo/services/llm_service.py`: deterministic fallback plus optional llama.cpp and Gemini generation.
+- `redstring_demo/services/clue_extractor.py`: clue candidate selection.
+- `redstring_demo/services/validator.py`: response and clue validation.
+- `redstring_demo/bootstrap_model.py`: GGUF downloader.
+
+## Deployment
+- Single `g4dn.xlarge` Spot instance is the recommended demo shape.
+- Keep the model on EBS to avoid redownloading.
+- Keep the process warm with `REDSTRING_WARM_START=true`.
+- If you need even less cold-start pain, bake the GGUF into a custom AMI.
+
+## Cleanup Status
+- Legacy warmup/TTS/RAG/orchestrator code removed.
+- Old CLI demo flow removed.
+- Backend now reads as one deployable dialogue API.

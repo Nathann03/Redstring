@@ -1,66 +1,211 @@
-# Hybrid Retrieval + RAG Demo Backend
+# RedString Dialogue API
 
-This directory contains a self-contained prototype of the hybrid retrieval and RAG pipeline described in the system design. Everything runs locally and relies on in-memory services so it can be demoed without paid APIs.
+This `backend` folder is a standalone AI dialogue service for RedString. It is not the full game backend. The backend now owns the revised suspect + weapon + location story data, and the game sends the NPC being questioned, the player's question, the evidence piece currently being discussed, and the dialogue-relevant game state.
 
-## Quickstart
+## API Contract
 
-1. Create the virtual environment and install test dependencies:
-   ```bash
-   python3 -m venv backend/.venv
-   source backend/.venv/bin/activate
-   python3 -m pip install --upgrade pip
-   python3 -m pip install -r backend/requirements.txt
-   ```
-2. Run the unit tests to exercise the full flow without TTS or external models:
-   ```bash
-   source backend/.venv/bin/activate
-   python3 -m pytest backend/tests -q
-   ```
-   If your environment restricts temporary directories (common in sandboxed setups), set `TMPDIR=$(pwd)/backend/.tmp` and add `--capture=no` to the pytest command.
-3. (Optional) Launch the CLI demo to see responses in the terminal:
-   ```bash
-   source backend/.venv/bin/activate
-   PYTHONPATH=backend/src python3 -m redstring_demo.cli.demo_runner --interactive
-   ```
-   - Use `--interactive` (default when no `--question` is supplied) for a menu where you pick an NPC and fire off multiple questions.
-   - Flags: `--question "<your text>"`, `--npc <npc_id>`, `--enable-tts`, `--data-file /path/to/npc_dialogue.json`, `--log-level DEBUG`.
+`POST /dialogue`
 
-## Editing Dialogue & Vector Store Data
+Headers:
+- `Authorization: Bearer <REDSTRING_SECRET_KEY>`
 
-- Dialogue, anchor facts, preset dialogue, and pregenerated responses live in `backend/data/npc_dialogue.json`.
-- Add or edit NPC entries in that file to immediately update the warm-up lines, anchor facts, and retrieval responses.
-- The local “vector DB” seeds itself from the same JSON file on startup; no external service is required. If you want to point at a different file, pass `--data-file /path/to/npc_dialogue.json` to `PYTHONPATH=backend/src python3 -m redstring_demo.cli.demo_runner` or call `build_demo_orchestrator(path=Path(...))` from `redstring_demo.pipeline.factory` in code.
+Request body:
 
-## Package Structure
+```json
+{
+  "npc_id": "james_okoye",
+  "player_question": "Where were you during the murder window?",
+  "evidence_id": "EVID_09",
+  "generation_backend": "auto",
+  "game_state": {
+    "found_clues": ["EVID_09"],
+    "asked_questions": ["who_are_you"],
+    "npc_id": "james_okoye"
+  }
+}
+```
 
-- `redstring_demo/core`: cross-cutting dataclasses and embedding utilities.
-- `redstring_demo/data`: JSON loader + in-memory vector store seeded from `npc_dialogue.json`.
-- `redstring_demo/services`: warm-up queue, RAG builder, LLM/TTS stubs, cache, and retrieval engine.
-- `redstring_demo/pipeline`: orchestrator and factory wiring all layers together.
-- `redstring_demo/cli`: terminal demo wiring (`python3 -m redstring_demo.cli.demo_runner`).
+Response:
 
-## Optional: Local LLaMA Model via llama.cpp
+```json
+{
+  "response": "Those are my timed water quality tests. You have to collect a sample every thirty minutes, then watch the color change before the next one. I was stuck at this bench from 9 PM to midnight.",
+  "clues_unlocked": []
+}
+```
 
-The orchestrator defaults to a deterministic stub LLM so the tests stay fast and offline. To experiment with a local quantized model:
+Notes:
+- `npc_id` is the preferred contract. The server loads the matching NPC record from [`backend/character_info.txt`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/character_info.txt).
+- `evidence_id` should be the map evidence the player is asking about, such as `EVID_02` for the wrench or `EVID_11` for Yuki's damp jacket.
+- `generation_backend` accepts `auto`, `local`, or `gemini`.
+- `auto` uses retrieval first, then prefers Gemini when the local llama service is not ready and Gemini is configured, otherwise it uses the local backend.
+- `gemini` bypasses local generation on retrieval misses and sends the request to the Gemini API instead.
+- The legacy `character_info` payload is still accepted for compatibility, but new clients should not send it.
 
-1. Install the additional dependency (compilation may take a few minutes):
-   ```bash
-   source backend/.venv/bin/activate
-   python3 -m pip install -r backend/requirements-llm.txt
-   ```
-2. Copy `backend/config/local_llm_config.example.json` to `backend/config/local_llm_config.json` and update the `model_path` to point to a GGUF model on disk.
-   - Download a GGUF (Q4_K_M is recommended) model from here: https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/blob/main/README.md
-3. Launch the CLI with the config to verify everything locally (add `--interactive` for a menu, `--log-level DEBUG` for verbose tracing):
-   ```bash
-   source backend/.venv/bin/activate
-   PYTHONPATH=backend/src python3 -m redstring_demo.cli.demo_runner \
-     --llama-config backend/config/local_llm_config.json \
-     --interactive
-   ```
-4. In downstream code, load the configuration and call `build_llama_orchestrator(...)` from `redstring_demo.pipeline.factory`. Call `llm.spin_up()` once at startup to load the model, then continue using the orchestrator as in the tests. If the llama dependency is unavailable, the system falls back to the deterministic stub.
+`GET /health`
 
-> **Tip:** A great balance of speed and quality on consumer GPUs/CPUs is `Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf`. Point `model_path` at the GGUF on your WSL filesystem (e.g. `/mnt/c/.../Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf`).
+Returns:
 
-## API Keys
+```json
+{
+  "status": "ok",
+  "llm_ready": true,
+  "gemini_available": true,
+  "known_characters": ["catch_wallace", "james_okoye", "riley_chen", "yuki_tanaka"]
+}
+```
 
-If you eventually connect to paid APIs (e.g., remote TTS), duplicate `backend/demo_keys.example.json` and populate your secrets. The current demo uses stubs so no keys are required.
+`POST /warmup`
+
+Headers:
+- `Authorization: Bearer <REDSTRING_SECRET_KEY>`
+
+Response:
+
+```json
+{
+  "status": "ok",
+  "llm_ready": true
+}
+```
+
+## How Output Structure Is Enforced
+
+The backend does not trust raw LLM output directly.
+
+Enforcement layers:
+- The llama prompt instructs the model to return JSON only.
+- The LLM service parses the model response and accepts it only if it is a JSON object with exactly these keys:
+  - `response`
+  - `clues_unlocked`
+- If parsing fails, if the model adds extra keys, if `clues_unlocked` is not a string array, or if `response` is empty, the backend falls back to the deterministic grounded generator.
+- The FastAPI endpoint itself returns a typed response model with only:
+  - `response: str`
+  - `clues_unlocked: list[str]`
+- Clues are then filtered again so only valid IDs from `character_info.evidence_knowledge` survive.
+
+So the practical guarantee is:
+- API response shape is always correct.
+- Invalid model JSON never leaks to the client.
+- Invalid clue IDs are stripped before returning.
+
+## Story Dataset
+
+The revised capstone script lives in:
+- [`backend/data/npc_dialogue.json`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/data/npc_dialogue.json)
+
+It now stores:
+- story-level metadata, including the suspect + weapon + location solution
+- the 11 evidence entries from the updated PDF
+- one pre-scripted evidence response per NPC per evidence item
+
+The current solution in the backend data is:
+- suspect: `Yuki Tanaka`
+- weapon: `Wrench`
+- location: `Tidal Pool Lab`
+
+## Recommended Model
+
+Recommended lightweight model:
+- Repo: `bartowski/Llama-3.2-3B-Instruct-GGUF`
+- File: `Llama-3.2-3B-Instruct-Q4_K_M.gguf`
+
+Reasoning:
+- roughly 2 GB instead of a much heavier 7B or 8B class model
+- good enough for short, grounded detective dialogue
+- faster startup and cheaper storage/bandwidth
+- easier to keep warm on a single GPU instance
+
+## Best Cold-Start Strategy
+
+The best practical way to avoid an ugly cold start is:
+- keep one instance running during your demo window
+- warm the model at process startup with `REDSTRING_WARM_START=true`
+- store the GGUF on the instance's EBS volume so it is not redownloaded on every restart
+
+Best order of preference:
+1. Keep the GGUF file on attached EBS and keep the service running.
+2. If you rebuild instances often, bake the model into a custom AMI.
+3. If you must download on boot, pull from S3 in the same region instead of from the public internet.
+
+For a capstone demo, the simplest good setup is:
+- one `g4dn.xlarge` instance
+- one quantized 3B GGUF model on EBS
+- one always-on process
+
+That is better than trying to scale to zero. Scale-to-zero is what creates the worst cold start.
+
+## Local Run
+
+```bash
+python3 -m venv backend/.venv
+source backend/.venv/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip install -r backend/requirements.txt
+export PYTHONPATH=backend/src
+export REDSTRING_SECRET_KEY=replace-me
+uvicorn redstring_demo.api:app --reload
+```
+
+Optional llama.cpp install:
+
+```bash
+python3 -m pip install -r backend/requirements-llm.txt
+export REDSTRING_LLM_CONFIG=backend/config/local_llm_config.json
+export REDSTRING_HF_REPO_ID=bartowski/Llama-3.2-3B-Instruct-GGUF
+export REDSTRING_HF_FILENAME=Llama-3.2-3B-Instruct-Q4_K_M.gguf
+```
+
+## AWS Deployment
+
+Recommended AWS setup:
+- one `g4dn.xlarge` Spot instance
+- Deep Learning GPU AMI
+- bearer-token auth at the app layer
+- API port open publicly, protected by the bearer token
+- GGUF stored on EBS and warmed on startup
+
+Terraform is in:
+- [`backend/iac/terraform`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/iac/terraform)
+
+EC2 service files are in:
+- [`backend/deploy/redstring-dialogue.service`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/deploy/redstring-dialogue.service)
+- [`backend/deploy/redstring-dialogue.env.example`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/deploy/redstring-dialogue.env.example)
+- [`backend/deploy/install_on_ec2.sh`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/deploy/install_on_ec2.sh)
+
+Plain-text deployment steps are in:
+- [`backend/AWS_DEPLOYMENT_STEPS.txt`](/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/AWS_DEPLOYMENT_STEPS.txt)
+
+## Recommended Game Startup Flow
+
+When the player launches the game:
+
+1. Call `GET /health`.
+2. If `llm_ready` is `false`, call `POST /warmup` in the background.
+3. Poll `/health` until `llm_ready` becomes `true`.
+4. Only then allow the first real NPC conversation, or show a short loading state until warm-up finishes.
+
+This is cleaner than sending a fake dialogue request just to force model load.
+
+## Environment Variables
+
+- `REDSTRING_SECRET_KEY`
+- `REDSTRING_CHARACTER_FILE`
+- `REDSTRING_DIALOGUE_FILE`
+- `REDSTRING_LLM_CONFIG`
+- `REDSTRING_GEMINI_API_KEY`
+- `REDSTRING_GEMINI_MODEL`
+- `REDSTRING_HF_REPO_ID`
+- `REDSTRING_HF_FILENAME`
+- `HF_TOKEN`
+- `REDSTRING_MODEL_S3_URI`
+- `REDSTRING_MODEL_URL`
+- `REDSTRING_WARM_START`
+- `PORT`
+
+## Tests
+
+```bash
+source backend/.venv/bin/activate
+PYTHONPATH=backend/src python3 -m pytest backend/tests -q
+```

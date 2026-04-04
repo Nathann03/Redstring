@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+apt-get update
+apt-get install -y python3-venv python3-pip git
+
+mkdir -p /opt/redstring
+chown ubuntu:ubuntu /opt/redstring
+
+cat >/etc/profile.d/redstring.sh <<'EOF'
+export PYTHONPATH=/opt/redstring/backend/src
+export PORT=${app_port}
+EOF

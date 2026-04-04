@@ -1,110 +1,419 @@
 {
+  "story": {
+    "victim": "Morgan Blackwell",
+    "goal": "Determine the suspect, weapon, and location of the murder.",
+    "solution": {
+      "suspect": "Yuki Tanaka",
+      "weapon": "Wrench",
+      "location": "Tidal Pool Lab"
+    },
+    "possible_weapons": ["EVID_02", "EVID_04", "EVID_05", "EVID_06"]
+  },
+  "evidence_data": [
+    {
+      "evidence_id": "EVID_01",
+      "title": "Tool Pegboard",
+      "location": "Equipment Room",
+      "description": "The tool pegboard is meticulously organized with labeled hooks. One hook labeled 'WRENCH - 14\"' is empty. No dust outline, so it was removed recently.",
+      "is_possible_weapon": false
+    },
+    {
+      "evidence_id": "EVID_02",
+      "title": "Wrench on Ground",
+      "location": "Tidal Pool Lab",
+      "description": "A 14-inch wrench lies on the concrete floor near Morgan's body. It's wet and appears to have been rinsed clean.",
+      "is_possible_weapon": true
+    },
+    {
+      "evidence_id": "EVID_03",
+      "title": "Morgan's Body",
+      "location": "Tidal Pool Lab",
+      "description": "Morgan's body lies near the edge of the tidal pool. There's blunt force trauma to the back of his head, seeping blood. His skin is pruned from prolonged exposure to the humid, misty environment, suggesting he's been here for many hours.",
+      "is_possible_weapon": false
+    },
+    {
+      "evidence_id": "EVID_04",
+      "title": "Fishing Wire",
+      "location": "Equipment Room",
+      "description": "A coil of thin, ultra-strong fishing wire sits on a shelf. The wire is taut and sharp enough to cut skin if pulled tight.",
+      "is_possible_weapon": true
+    },
+    {
+      "evidence_id": "EVID_05",
+      "title": "Letter Opener",
+      "location": "Main Office",
+      "description": "A sharp letter opener sits on the desk. The blade is long and pointed, with a weighted brass handle.",
+      "is_possible_weapon": true
+    },
+    {
+      "evidence_id": "EVID_06",
+      "title": "Chemical Vial",
+      "location": "Beacon Room",
+      "description": "A research chemical vial sits on the work bench, half empty. The label warns: 'TOXIC - Fatal if ingested in high concentrations.'",
+      "is_possible_weapon": true
+    },
+    {
+      "evidence_id": "EVID_07",
+      "title": "Research Station Log",
+      "location": "Beacon Room",
+      "description": "The research station log shows Morgan's last entry, timestamped yesterday at 9:45 PM: 'Heading down to tidal pool lab at 10:00 PM for late night contamination sampling. Need to collect data during high tide.'",
+      "is_possible_weapon": false
+    },
+    {
+      "evidence_id": "EVID_08",
+      "title": "Muddy Boot Prints and Wet Rope",
+      "location": "Main Office",
+      "description": "Large boot prints track across the floor, the mixture of wet mud and coarse sand thick and caked on. Next to them sits a coil of heavy marine rope, soaking wet and covered in fresh seaweed.",
+      "is_possible_weapon": false
+    },
+    {
+      "evidence_id": "EVID_09",
+      "title": "Timed Chemical Test",
+      "location": "Equipment Room",
+      "description": "A row of test tubes sits in a rack, each labeled in thirty-minute intervals from 9:00 PM through midnight. Each tube contains a sample at different stages of a color-changing reaction.",
+      "is_possible_weapon": false
+    },
+    {
+      "evidence_id": "EVID_10",
+      "title": "Beacon Room Security Log",
+      "location": "Beacon Room",
+      "description": "A security tablet by the door shows Riley entering at 7:09 PM, James entering at 12:14 AM, James leaving at 3:07 AM, and Riley leaving at 7:51 AM.",
+      "is_possible_weapon": false
+    },
+    {
+      "evidence_id": "EVID_11",
+      "title": "Yuki's Damp Jacket",
+      "location": "Main Office",
+      "description": "A professional jacket is draped over a chair. The sleeves and lower hem are noticeably wet and carry a faint chemical smell from the treated tidal pool water.",
+      "is_possible_weapon": false
+    }
+  ],
   "npc_data": [
     {
-      "npc_id": "judge_emily",
-      "preset_dialogue": [
-        "I'm gathering my thoughts—ask about the town or the trial in the meantime.",
-        "Hold on, I'm still reviewing the court records.",
-        "Give me a second; try asking about the courthouse or the weather.",
-        "While I prepare my ruling, perhaps check on the jurors' notes."
-      ],
-      "anchor_facts": [
-        "She presided over the town's high-profile embezzlement case.",
-        "She keeps meticulous notes of courtroom events.",
-        "She sympathises with honest witnesses and dislikes evasive answers.",
-        "She volunteers at the town library on weekends."
-      ],
+      "npc_id": "james_okoye",
       "responses": [
         {
-          "source_id": "judge_emily_leave_trial",
-          "text": "I noticed Mr. K leaving toward the back exit around 9:05pm.",
-          "embedding_text": "Did anyone leave after the trial?",
-          "tags": ["trial", "movement", "timeline"]
+          "source_id": "james_evid_01",
+          "evidence_id": "EVID_01",
+          "text": "Yes, the wrench is definitely missing. I use it all the time for calibrating the sensors, but I haven't touched it since yesterday afternoon. Someone else must have taken it.",
+          "embedding_text": "What does James think about the missing wrench pegboard?",
+          "tags": ["evidence", "equipment_room"]
         },
         {
-          "source_id": "judge_emily_schedule",
-          "text": "Court ended at 9pm sharp, and I stayed behind to file the closing paperwork.",
-          "embedding_text": "When did the trial end and what did you do afterwards?",
-          "tags": ["trial", "schedule"]
+          "source_id": "james_evid_02",
+          "evidence_id": "EVID_02",
+          "text": "That's my wrench from the equipment room. But why would it be down here? Someone brought it all the way down to the lab.",
+          "embedding_text": "What does James say about the wrench on the ground?",
+          "tags": ["evidence", "weapon"]
         },
         {
-          "source_id": "judge_emily_verdict_expectation",
-          "text": "I will deliver the verdict tomorrow morning after reviewing the witness logs once more.",
-          "embedding_text": "When will you announce the verdict?",
-          "tags": ["trial", "verdict", "schedule"]
+          "source_id": "james_evid_03",
+          "evidence_id": "EVID_03",
+          "text": "The head trauma and the pruning mean he's been here all night.",
+          "embedding_text": "What does James notice about Morgan's body?",
+          "tags": ["evidence", "body"]
         },
         {
-          "source_id": "judge_emily_notes",
-          "text": "My notes mention that the balcony gallery was empty except for the bailiff at closing.",
-          "embedding_text": "What do your notes say about the gallery?",
-          "tags": ["trial", "notes"]
+          "source_id": "james_evid_04",
+          "evidence_id": "EVID_04",
+          "text": "That's industrial fishing line. Strong enough to be dangerous if misused.",
+          "embedding_text": "What does James say about the fishing wire?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "james_evid_05",
+          "evidence_id": "EVID_05",
+          "text": "That letter opener has been on that desk for years. Standard office supply.",
+          "embedding_text": "What does James say about the letter opener?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "james_evid_06",
+          "evidence_id": "EVID_06",
+          "text": "That's one of our research chemicals. We use it for testing water contamination levels. Dangerous stuff in the wrong context.",
+          "embedding_text": "What does James say about the chemical vial?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "james_evid_07",
+          "evidence_id": "EVID_07",
+          "text": "Morgan was planning to be in the tidal pool lab at 10 PM last night. He often worked late when the tide was right for sampling.",
+          "embedding_text": "What does James say about Morgan's research station log?",
+          "tags": ["evidence", "timeline"]
+        },
+        {
+          "source_id": "james_evid_08",
+          "evidence_id": "EVID_08",
+          "text": "Those boot prints have mud and sand, and that rope is drenched with seaweed on it. Whoever made those prints was down at the water's edge during the storm for hours, not just a quick trip outside.",
+          "embedding_text": "What does James infer from the muddy boot prints and wet rope?",
+          "tags": ["evidence", "alibi"]
+        },
+        {
+          "source_id": "james_evid_09",
+          "evidence_id": "EVID_09",
+          "text": "Those are my timed water quality tests. You have to collect a sample every thirty minutes, then watch the color change before the next one. I was stuck at this bench from 9 PM to midnight.",
+          "embedding_text": "What does James say about the timed chemical test?",
+          "tags": ["evidence", "alibi"]
+        },
+        {
+          "source_id": "james_evid_10",
+          "evidence_id": "EVID_10",
+          "text": "Right, I came up here at midnight after I finished my tests downstairs. Riley and I worked on data analysis together until about 3 AM. But from 9 to midnight, I was in the equipment room taking samples.",
+          "embedding_text": "What does James say about the beacon room security log?",
+          "tags": ["evidence", "alibi"]
+        },
+        {
+          "source_id": "james_evid_11",
+          "evidence_id": "EVID_11",
+          "text": "That's Yuki's jacket, and it's pretty wet. That chemical smell is from the treated water in the tidal pool. You'd have to be down there to get that saturated.",
+          "embedding_text": "What does James say about Yuki's damp jacket?",
+          "tags": ["evidence", "yuki"]
         }
       ]
     },
     {
-      "npc_id": "detective_ron",
-      "preset_dialogue": [
-        "I'm checking the evidence board, maybe ask about the suspects.",
-        "One moment—try chatting about local gossip while I dig into the files.",
-        "Hold tight; I'm cross-referencing last night's patrol logs."
-      ],
-      "anchor_facts": [
-        "He leads the precinct's investigative unit.",
-        "He trusts physical evidence over hearsay.",
-        "He maintains a network of informants in the harbor district.",
-        "He grew up in the warehouse district and knows every dockhand by name."
-      ],
+      "npc_id": "catch_wallace",
       "responses": [
         {
-          "source_id": "detective_ron_harbor",
-          "text": "The harbor cameras caught a shadow slipping into Warehouse 3 just after midnight.",
-          "embedding_text": "Did the harbor cameras see anything suspicious last night?",
-          "tags": ["harbor", "casefile"]
+          "source_id": "catch_evid_01",
+          "evidence_id": "EVID_01",
+          "text": "Tools and equipment are not my department. You'd have to ask the science folks about their gear.",
+          "embedding_text": "What does Catch say about the missing wrench pegboard?",
+          "tags": ["evidence", "equipment_room"]
         },
         {
-          "source_id": "detective_ron_plan",
-          "text": "Set up on the catwalk above Warehouse 3; you'll get a clear view without being seen.",
-          "embedding_text": "Where should I position myself for the stakeout?",
-          "tags": ["harbor", "strategy", "stakeout"]
+          "source_id": "catch_evid_02",
+          "evidence_id": "EVID_02",
+          "text": "A wrench just lying on the ground? Someone brought it down here for a reason.",
+          "embedding_text": "What does Catch say about the wrench on the ground?",
+          "tags": ["evidence", "weapon"]
         },
         {
-          "source_id": "detective_ron_suspects",
-          "text": "Keep an eye on Mira Lane—she's been asking questions about the shipment schedule.",
-          "embedding_text": "Who seems suspicious about the shipment?",
-          "tags": ["suspects", "harbor"]
+          "source_id": "catch_evid_03",
+          "evidence_id": "EVID_03",
+          "text": "Hit from behind. Whoever did this came up on him while he was working. And he's been here all night by the looks of it.",
+          "embedding_text": "What does Catch notice about Morgan's body?",
+          "tags": ["evidence", "body"]
+        },
+        {
+          "source_id": "catch_evid_04",
+          "evidence_id": "EVID_04",
+          "text": "That's old supply line from my boat. Been sitting there collecting dust since last season. Nobody's touched it.",
+          "embedding_text": "What does Catch say about the fishing wire?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "catch_evid_05",
+          "evidence_id": "EVID_05",
+          "text": "That's a fancy letter opener. Sharp looking thing.",
+          "embedding_text": "What does Catch say about the letter opener?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "catch_evid_06",
+          "evidence_id": "EVID_06",
+          "text": "I don't mess with chemicals. That's way above my pay grade.",
+          "embedding_text": "What does Catch say about the chemical vial?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "catch_evid_07",
+          "evidence_id": "EVID_07",
+          "text": "So Morgan went down to the lab at 10 PM. Makes sense, he was always particular about timing his samples with the tide.",
+          "embedding_text": "What does Catch say about Morgan's research station log?",
+          "tags": ["evidence", "timeline"]
+        },
+        {
+          "source_id": "catch_evid_08",
+          "evidence_id": "EVID_08",
+          "text": "Yeah, that's all mine. I was outside most of the night securing my boat down on the dock. Waves were throwing seaweed everywhere, and that's why I tracked all that sand and mud inside when I finally came back in.",
+          "embedding_text": "What does Catch say about the muddy boot prints and wet rope?",
+          "tags": ["evidence", "alibi"]
+        },
+        {
+          "source_id": "catch_evid_09",
+          "evidence_id": "EVID_09",
+          "text": "Sounds boring as hell. If James says he had to stand there watching tubes all night, I believe him.",
+          "embedding_text": "What does Catch say about the timed chemical test?",
+          "tags": ["evidence", "james"]
+        },
+        {
+          "source_id": "catch_evid_10",
+          "evidence_id": "EVID_10",
+          "text": "So James came up to the beacon room at midnight. That's after Morgan was already dead.",
+          "embedding_text": "What does Catch say about the beacon room security log?",
+          "tags": ["evidence", "james"]
+        },
+        {
+          "source_id": "catch_evid_11",
+          "evidence_id": "EVID_11",
+          "text": "That jacket's more than just damp from humidity. I know that smell. That's the treated water from the research pool.",
+          "embedding_text": "What does Catch say about Yuki's damp jacket?",
+          "tags": ["evidence", "yuki"]
         }
       ]
     },
     {
-      "npc_id": "bartender_lucy",
-      "preset_dialogue": [
-        "I'm mixing drinks, but I can spare a moment for gossip.",
-        "Give me a sec—these patrons love their nighttime stories.",
-        "If you're bored, ask about the nightly specials while I finish up."
-      ],
-      "anchor_facts": [
-        "She has run the Foggy Lantern tavern for fifteen years.",
-        "She hears rumors from sailors and night-shift workers.",
-        "She keeps a private ledger of generous tippers."
-      ],
+      "npc_id": "yuki_tanaka",
       "responses": [
         {
-          "source_id": "bartender_lucy_weather",
-          "text": "Storm's rolling in tonight—dockhands say the waves are already cresting at the breakwater.",
-          "embedding_text": "What's the weather going to be like tonight?",
-          "tags": ["weather", "harbor"]
+          "source_id": "yuki_evid_01",
+          "evidence_id": "EVID_01",
+          "text": "I'm not familiar with maintenance equipment. My work is administrative, not technical.",
+          "embedding_text": "What does Yuki say about the missing wrench pegboard?",
+          "tags": ["evidence", "equipment_room"]
         },
         {
-          "source_id": "bartender_lucy_gossip",
-          "text": "I heard the courier swapped crates with a stranger near Pier 6 just after sundown.",
-          "embedding_text": "Any gossip about the courier?",
-          "tags": ["gossip", "harbor", "courier"]
+          "source_id": "yuki_evid_02",
+          "evidence_id": "EVID_02",
+          "text": "It appears someone transported a tool to this location.",
+          "embedding_text": "What does Yuki say about the wrench on the ground?",
+          "tags": ["evidence", "weapon"]
         },
         {
-          "source_id": "bartender_lucy_regulars",
-          "text": "Detective Ron drops by for ginger tea when a case keeps him up all night.",
-          "embedding_text": "Does Detective Ron ever visit your tavern?",
-          "tags": ["npc", "relationships"]
+          "source_id": "yuki_evid_03",
+          "evidence_id": "EVID_03",
+          "text": "The extended time suggests the incident occurred many hours ago, likely late evening.",
+          "embedding_text": "What does Yuki say about Morgan's body?",
+          "tags": ["evidence", "body"]
+        },
+        {
+          "source_id": "yuki_evid_04",
+          "evidence_id": "EVID_04",
+          "text": "I'm not familiar with fishing equipment.",
+          "embedding_text": "What does Yuki say about the fishing wire?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "yuki_evid_05",
+          "evidence_id": "EVID_05",
+          "text": "Standard office equipment. I use one regularly for mail.",
+          "embedding_text": "What does Yuki say about the letter opener?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "yuki_evid_06",
+          "evidence_id": "EVID_06",
+          "text": "Research chemicals are standard in a facility like this.",
+          "embedding_text": "What does Yuki say about the chemical vial?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "yuki_evid_07",
+          "evidence_id": "EVID_07",
+          "text": "Morgan's schedule indicated he would be in the tidal pool lab at 10 PM. A predictable routine.",
+          "embedding_text": "What does Yuki say about Morgan's research station log?",
+          "tags": ["evidence", "timeline"]
+        },
+        {
+          "source_id": "yuki_evid_08",
+          "evidence_id": "EVID_08",
+          "text": "Those appear to be work boots. The rope's condition suggests extensive outdoor exposure during severe weather. I don't own footwear like that and I certainly wasn't outside.",
+          "embedding_text": "What does Yuki say about the muddy boot prints and wet rope?",
+          "tags": ["evidence", "catch"]
+        },
+        {
+          "source_id": "yuki_evid_09",
+          "evidence_id": "EVID_09",
+          "text": "A manual observation protocol would require continuous presence. Dr. Finnegan would need to remain at the station.",
+          "embedding_text": "What does Yuki say about the timed chemical test?",
+          "tags": ["evidence", "james"]
+        },
+        {
+          "source_id": "yuki_evid_10",
+          "evidence_id": "EVID_10",
+          "text": "Dr. Finnegan's access log shows he entered the beacon room at midnight, after the estimated time of death.",
+          "embedding_text": "What does Yuki say about the beacon room security log?",
+          "tags": ["evidence", "james"]
+        },
+        {
+          "source_id": "yuki_evid_11",
+          "evidence_id": "EVID_11",
+          "text": "That's my jacket. The lighthouse environment is quite humid, especially during storms. Condensation accumulates on clothing.",
+          "embedding_text": "What does Yuki say about the damp jacket?",
+          "tags": ["evidence", "alibi"]
+        }
+      ]
+    },
+    {
+      "npc_id": "riley_chen",
+      "responses": [
+        {
+          "source_id": "riley_evid_01",
+          "evidence_id": "EVID_01",
+          "text": "Oh, um, I don't really use tools like that. I'm mostly doing data entry and organizing files. That's more James's area.",
+          "embedding_text": "What does Riley say about the missing wrench pegboard?",
+          "tags": ["evidence", "equipment_room"]
+        },
+        {
+          "source_id": "riley_evid_02",
+          "evidence_id": "EVID_02",
+          "text": "Why would a wrench be in the tidal pool lab? Morgan didn't do mechanical work down there. He was focused on water samples.",
+          "embedding_text": "What does Riley say about the wrench on the ground?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "riley_evid_03",
+          "evidence_id": "EVID_03",
+          "text": "Oh god, he was attacked from behind? And he's been here all night? This is horrible.",
+          "embedding_text": "What does Riley notice about Morgan's body?",
+          "tags": ["evidence", "body"]
+        },
+        {
+          "source_id": "riley_evid_04",
+          "evidence_id": "EVID_04",
+          "text": "Wow, that wire looks really strong and sharp. If that got wrapped around you...",
+          "embedding_text": "What does Riley say about the fishing wire?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "riley_evid_05",
+          "evidence_id": "EVID_05",
+          "text": "That's really sharp. I always thought it looked kind of dangerous just sitting there.",
+          "embedding_text": "What does Riley say about the letter opener?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "riley_evid_06",
+          "evidence_id": "EVID_06",
+          "text": "Oh, yeah, I use that sometimes for the contamination tests Morgan has me run. You have to be really careful with it. I was using it last night upstairs.",
+          "embedding_text": "What does Riley say about the chemical vial?",
+          "tags": ["evidence", "weapon"]
+        },
+        {
+          "source_id": "riley_evid_07",
+          "evidence_id": "EVID_07",
+          "text": "Morgan was down in the lab at 10 PM doing water samples. He did that a lot during high tide.",
+          "embedding_text": "What does Riley say about Morgan's research station log?",
+          "tags": ["evidence", "timeline"]
+        },
+        {
+          "source_id": "riley_evid_08",
+          "evidence_id": "EVID_08",
+          "text": "Those definitely aren't mine. And that rope is really wet and covered in seaweed. Catch must have been outside for a really long time, right down by the water in the storm.",
+          "embedding_text": "What does Riley say about the muddy boot prints and wet rope?",
+          "tags": ["evidence", "catch"]
+        },
+        {
+          "source_id": "riley_evid_09",
+          "evidence_id": "EVID_09",
+          "text": "Oh god, those color-change tests are the worst. You literally just stand there and stare. James couldn't have gone anywhere.",
+          "embedding_text": "What does Riley say about the timed chemical test?",
+          "tags": ["evidence", "james"]
+        },
+        {
+          "source_id": "riley_evid_10",
+          "evidence_id": "EVID_10",
+          "text": "Yeah. James came up at midnight and we worked on spreadsheets for a few hours using the test results he had just finished gathering.",
+          "embedding_text": "What does Riley say about the beacon room security log?",
+          "tags": ["evidence", "james"]
+        },
+        {
+          "source_id": "riley_evid_11",
+          "evidence_id": "EVID_11",
+          "text": "That's Yuki's jacket. It does smell kind of chemical-y. I wonder why?",
+          "embedding_text": "What does Riley say about Yuki's damp jacket?",
+          "tags": ["evidence", "yuki"]
         }
       ]
     }

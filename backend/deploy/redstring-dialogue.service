@@ -1,0 +1,17 @@
+[Unit]
+Description=RedString Dialogue API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/redstring
+EnvironmentFile=/etc/redstring-dialogue.env
+ExecStart=/opt/redstring/backend/start_backend.sh
+Restart=always
+RestartSec=5
+User=ubuntu
+Group=ubuntu
+
+[Install]
+WantedBy=multi-user.target
