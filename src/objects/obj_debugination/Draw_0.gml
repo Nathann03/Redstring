@@ -2,7 +2,7 @@ winwin_draw_begin(extra);
 //winwin_set_chromakey(extra, c_black);
 winwin_draw_clear(c_black);
 draw_set_halign(fa_left);
-draw_set_font(fnt_main);
+draw_set_font(fnt_ut);
 draw_set_color(c_white);
 var displayedMessages = min(msgcount, maxmsg);
 var _height = string_height("Debugination console by Noah Rider");

@@ -21,6 +21,12 @@ for (n = 1; n <= strpos; n++)  {
 		if (char1 == "C") { //choicer
 			
 		}
+		if (char1 == "n") { //newline
+			yy += vspacing;
+			xx = writex;
+			n += 1;
+			continue;
+		}
 	}
 	if (char == "%") {
 		if (char1 == "%") {
@@ -28,6 +34,11 @@ for (n = 1; n <= strpos; n++)  {
 			return;
 		}
 	}
+	/* if (n > 1 && (n-1) % 35 == 0) { //automatic text wrapping
+		yy += vspacing;
+		xx = writex;
+		if (char == " ") n += 1;
+	} */
 	
 	draw_set_font(textfont);
 	draw_set_color(textcolor);

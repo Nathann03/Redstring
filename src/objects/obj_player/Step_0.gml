@@ -1,8 +1,8 @@
 switch(global.facing) {
-	case 0: sprite_index = spr_atlasd; break;
-	case 1: sprite_index = spr_atlasr; break;
-	case 2: sprite_index = spr_atlasu; break;
-	case 3: sprite_index = spr_atlasl; break;
+	case 0: sprite_index = spr_playerd; break;
+	case 1: sprite_index = spr_playerr; break;
+	case 2: sprite_index = spr_playeru; break;
+	case 3: sprite_index = spr_playerl; break;
 }
 
 if (movement) {
@@ -12,22 +12,22 @@ if (movement) {
 	if (button_held(KEY.DOWN)) {
 		moving = true;
 		global.facing = 0;
-		my = moveSpeed;
+		if (!place_meeting(x, y + moveSpeed, obj_collision)) my = moveSpeed;
 	}
 	if (button_held(KEY.RIGHT)) {
 		moving = true;
 		global.facing = 1;
-		mx = moveSpeed;
+		if (!place_meeting(x + moveSpeed, y, obj_collision)) mx = moveSpeed;
 	}
 	if (button_held(KEY.UP)) {
 		moving = true;
 		global.facing = 2;
-		my = -moveSpeed;
+		if (!place_meeting(x, y - moveSpeed, obj_collision)) my = -moveSpeed;
 	}
 	if (button_held(KEY.LEFT)) {
 		moving = true;
 		global.facing = 3;
-		mx = -moveSpeed;
+		if (!place_meeting(x - moveSpeed, y, obj_collision)) mx = -moveSpeed;
 	}
 	x += mx;
 	y += my;

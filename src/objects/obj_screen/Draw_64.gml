@@ -9,7 +9,7 @@ if (global.debug and showDebugText)  {
 var sec = (quitmod/60);
 draw_set_alpha(clamp(sec,0,0.6));
 draw_set_color(c_black);
-draw_rectangle(0,0,640,380,false);
+draw_rectangle(0,0,640,480,false);
 draw_set_color(c_white);
 draw_set_alpha(sec);
 var quitmsg = "QUITTING";

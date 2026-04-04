@@ -3,7 +3,7 @@ createdWriter = false;
 writer = noone;
 
 surf = -1;
-surfWidth = 580;
+surfWidth = 600;
 surfHeight = 2;
 
 spriteSpeed = 6/60;

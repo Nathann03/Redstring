@@ -4,7 +4,7 @@ function scr_textrender(txr) {
 		case 4: //main overworld
 			hspacing = 16;
 			vspacing = 32;
-			writex = x + 8;
+			writex = x + 56;
 			writey = y + 6;
 			textfont = fnt_mainb;
 			textcolor = c_white;
