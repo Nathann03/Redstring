@@ -16,6 +16,8 @@
   - `auto`
   - `local`
   - `gemini`
+  - `groq`
+  - `openrouter`
 - `game_state`
   - `found_clues`
   - `asked_questions`
@@ -29,7 +31,7 @@ The final API response is always shaped by the FastAPI response model, not by ra
 
 ## Output Enforcement
 - The llama prompt requests JSON only.
-- The Gemini prompt also requests strict JSON only.
+- Hosted-provider prompts also request strict JSON only.
 - Parsed model output is accepted only if it is a JSON object with exactly:
   - `response`
   - `clues_unlocked`
@@ -38,17 +40,18 @@ The final API response is always shaped by the FastAPI response model, not by ra
 
 ## Active Architecture
 - `redstring_demo/api.py`: FastAPI app and typed response models, including `/warmup`.
-- `redstring_demo/services/dialogue_router.py`: confession check, retrieval-first route, local/Gemini generation selection.
+- `redstring_demo/services/dialogue_router.py`: confession check, retrieval-first route, and hosted-provider fallback chain.
 - `redstring_demo/services/retrieval_engine.py`: semantic retrieval.
-- `redstring_demo/services/llm_service.py`: deterministic fallback plus optional llama.cpp and Gemini generation.
-- `redstring_demo/services/clue_extractor.py`: clue candidate selection.
+- `redstring_demo/services/llm_service.py`: deterministic fallback plus optional llama.cpp and hosted-provider generation.
+- `redstring_demo/services/clue_extractor.py`: clue validation input from scripted hits or model output.
 - `redstring_demo/services/validator.py`: response and clue validation.
 - `redstring_demo/bootstrap_model.py`: GGUF downloader.
 
 ## Deployment
 - Single `g4dn.xlarge` Spot instance is the recommended demo shape.
 - Keep the model on EBS to avoid redownloading.
-- Keep the process warm with `REDSTRING_WARM_START=true`.
+- Keep `REDSTRING_WARM_START=false` if hosted providers are your default path and only warm local on demand.
+- Set `REDSTRING_WARM_START=true` only if you want local inference ready immediately at startup.
 - If you need even less cold-start pain, bake the GGUF into a custom AMI.
 
 ## Cleanup Status
