@@ -17,6 +17,10 @@ class Settings:
     warm_start: bool
     gemini_api_key: str
     gemini_model: str
+    groq_api_key: str
+    groq_model: str
+    openrouter_api_key: str
+    openrouter_model: str
 
 
 def load_settings() -> Settings:
@@ -30,4 +34,8 @@ def load_settings() -> Settings:
         warm_start=os.getenv("REDSTRING_WARM_START", "true").lower() in {"1", "true", "yes"},
         gemini_api_key=os.getenv("REDSTRING_GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", "")).strip(),
         gemini_model=os.getenv("REDSTRING_GEMINI_MODEL", "gemini-3-flash-preview").strip(),
+        groq_api_key=os.getenv("REDSTRING_GROQ_API_KEY", os.getenv("GROQ_API_KEY", "")).strip(),
+        groq_model=os.getenv("REDSTRING_GROQ_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct").strip(),
+        openrouter_api_key=os.getenv("REDSTRING_OPENROUTER_API_KEY", os.getenv("OPENROUTER_API_KEY", "")).strip(),
+        openrouter_model=os.getenv("REDSTRING_OPENROUTER_MODEL", "openrouter/auto").strip(),
     )

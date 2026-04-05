@@ -10,7 +10,13 @@ from typing import Iterable, List
 
 from ..core.models import CharacterInfo, DialogueRequest, DialogueResponse, GeneratedDialogue, RetrievalHitType
 from .clue_extractor import ClueExtractor
-from .llm_service import GeminiLLMService, LocalLLMService
+from .llm_service import (
+    GeminiLLMService,
+    GroqLLMService,
+    LocalLLMService,
+    OpenRouterLLMService,
+    is_case_related_question,
+)
 from .retrieval_engine import RetrievalEngine
 from .validator import DialogueValidator
 
@@ -25,6 +31,8 @@ class DialogueRouter:
     retrieval_engine: RetrievalEngine
     llm_service: LocalLLMService
     gemini_service: GeminiLLMService
+    groq_service: GroqLLMService
+    openrouter_service: OpenRouterLLMService
     clue_extractor: ClueExtractor
     validator: DialogueValidator
 
@@ -53,7 +61,7 @@ class DialogueRouter:
             clues = self.validator.validate_clues(
                 character,
                 request.game_state,
-                self.clue_extractor.extract(character, request.player_question, request.game_state, retrieval.clues),
+                self.clue_extractor.extract(character, request.game_state, retrieval.clues),
             )
             latency_ms = (time.perf_counter() - started) * 1000
             logger.info("route=retrieval character_id=%s latency_ms=%.2f", character.character_id, latency_ms)
@@ -64,13 +72,14 @@ class DialogueRouter:
                 latency_ms=latency_ms,
             )
 
-        suggested_clues = self.clue_extractor.extract(character, request.player_question, request.game_state)
+        suggested_clues: List[str] = []
         generated, route_name = self._generate_dialogue(request, suggested_clues)
         fallback_text = self.llm_service.generate(request, suggested_clues=[]).response
         response_text = self.validator.sanitize_response(
             generated.response,
             fallback_text=fallback_text,
             grounding_facts=self.llm_service.grounded_facts(character),
+            require_grounding=is_case_related_question(request.player_question, request.evidence_id),
         )
         clues = self.validator.validate_clues(
             character,
@@ -96,13 +105,28 @@ class DialogueRouter:
             generated = self.gemini_service.generate(request, suggested_clues=suggested_clues)
             return generated, "gemini"
 
+        if backend == "groq":
+            generated = self.groq_service.generate(request, suggested_clues=suggested_clues)
+            return generated, "groq"
+
+        if backend == "openrouter":
+            generated = self.openrouter_service.generate(request, suggested_clues=suggested_clues)
+            return generated, "openrouter"
+
         if backend == "local":
             generated = self.llm_service.generate(request, suggested_clues=suggested_clues)
             return generated, "llm"
 
-        if self.gemini_service.is_available() and not self.llm_service.is_ready():
-            generated = self.gemini_service.generate(request, suggested_clues=suggested_clues)
-            return generated, "gemini"
+        for route_name, service in (
+            ("gemini", self.gemini_service),
+            ("groq", self.groq_service),
+            ("openrouter", self.openrouter_service),
+        ):
+            if not service.is_available():
+                continue
+            generated = service.generate(request, suggested_clues=suggested_clues)
+            if not str(generated.reasoning.get("mode", "")).startswith("fallback_from_"):
+                return generated, route_name
 
         generated = self.llm_service.generate(request, suggested_clues=suggested_clues)
         return generated, "llm"

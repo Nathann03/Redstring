@@ -119,7 +119,7 @@ resource "aws_instance" "redstring_dialogue" {
 
       spot_options {
         instance_interruption_behavior = "stop"
-        spot_instance_type             = "one-time"
+        spot_instance_type             = "persistent"
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "model_path": "/mnt/c/Users/natha/OneDrive/Desktop/Redstring/backend/config/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+  "model_path": "backend/models/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
   "n_ctx": 2048,
   "n_threads": 4,
   "temperature": 0.25,

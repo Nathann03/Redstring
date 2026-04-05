@@ -53,7 +53,7 @@ class DialogueRequestPayload(BaseModel):
     character_info: Optional[CharacterInfoPayload] = None
     player_question: str
     evidence_id: Optional[str] = None
-    generation_backend: Optional[Literal["auto", "local", "gemini"]] = None
+    generation_backend: Optional[Literal["auto", "local", "gemini", "groq", "openrouter"]] = None
     game_state: GameStatePayload = Field(default_factory=GameStatePayload)
 
     @model_validator(mode="after")
@@ -87,6 +87,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "status": "ok",
             "llm_ready": llm_service.is_ready(),
             "gemini_available": bool(resolved_settings.gemini_api_key),
+            "groq_available": bool(resolved_settings.groq_api_key),
+            "openrouter_available": bool(resolved_settings.openrouter_api_key),
             "known_characters": sorted(character_dataset.records.keys()),
         }
 
@@ -133,6 +135,10 @@ def _build_runtime(settings: Settings):
         llm_config=llm_config,
         gemini_api_key=settings.gemini_api_key,
         gemini_model=settings.gemini_model,
+        groq_api_key=settings.groq_api_key,
+        groq_model=settings.groq_model,
+        openrouter_api_key=settings.openrouter_api_key,
+        openrouter_model=settings.openrouter_model,
     )
     if settings.warm_start:
         llm_service.spin_up()

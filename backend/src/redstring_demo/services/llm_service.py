@@ -15,6 +15,8 @@ from ..core.models import CharacterInfo, DialogueRequest, GeneratedDialogue, Lla
 logger = logging.getLogger(__name__)
 JSON_OBJECT_PATTERN = re.compile(r"\{.*\}", re.DOTALL)
 GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
+OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 GAME_BACKGROUND = (
     "RedString is a 2D detective game set in a stormy lighthouse research facility. "
     "The player investigates the murder of Morgan Blackwell and is trying to determine the killer, "
@@ -22,6 +24,49 @@ GAME_BACKGROUND = (
     "missing wrench in the tidal pool lab, but you must only reveal information that this NPC would truthfully "
     "know, suspect, admit under pressure, or confess after the confession trigger. Stay grounded in the provided "
     "evidence and character knowledge. Never speak as the narrator or game system."
+)
+CASE_RELATED_HINTS = (
+    "morgan",
+    "murder",
+    "kill",
+    "killed",
+    "alibi",
+    "evidence",
+    "clue",
+    "weapon",
+    "suspect",
+    "crime",
+    "scene",
+    "lab",
+    "wrench",
+    "jacket",
+    "rope",
+    "wire",
+    "vial",
+    "letter opener",
+    "where were",
+    "who was",
+    "why were",
+    "did you",
+    "what happened",
+)
+AMBIENT_HINTS = (
+    "favorite",
+    "ice cream",
+    "food",
+    "music",
+    "movie",
+    "color",
+    "hobby",
+    "weather",
+    "what day",
+    "what time",
+    "how are you",
+    "weekend",
+    "birthday",
+    "family",
+    "vacation",
+    "where are you from",
 )
 
 
@@ -39,6 +84,10 @@ class LocalLLMService:
         return self._ready
 
     def generate(self, request: DialogueRequest, suggested_clues: List[str] | None = None) -> GeneratedDialogue:
+        if not is_case_related_question(request.player_question, request.evidence_id):
+            response = self._compose_ambient_fallback_response(request.character_info)
+            reasoning = {"mode": "deterministic_ambient_fallback"}
+            return GeneratedDialogue(response=response, clues_unlocked=[], reasoning=reasoning)
         facts = self._select_supporting_facts(request.character_info, request.player_question, request.evidence_id)
         response = self._compose_grounded_response(request.character_info, request.player_question, facts)
         reasoning = {"supporting_facts": facts, "mode": "deterministic"}
@@ -102,6 +151,29 @@ class LocalLLMService:
         if follow_up:
             parts.append(follow_up)
         return " ".join(parts)
+
+    @staticmethod
+    def _compose_ambient_fallback_response(character_info: CharacterInfo) -> str:
+        if character_info.character_id == "james_okoye":
+            return "James gives a tired shrug and answers with dry patience, sounding more human than guarded for a moment."
+        if character_info.character_id == "catch_wallace":
+            return "Catch grunts, then gives you a rough but genuine answer instead of another argument."
+        if character_info.character_id == "yuki_tanaka":
+            return "Yuki pauses, then answers in a clipped, controlled way that still sounds like a real preference."
+        if character_info.character_id == "riley_chen":
+            return "Riley looks relieved to be asked something normal and answers with an awkward, honest little smile."
+        return "The NPC answers casually, if a little wearily."
+
+
+def is_case_related_question(question: str, evidence_id: str | None = None) -> bool:
+    lowered = question.lower().strip()
+    if not lowered:
+        return False
+    if any(hint in lowered for hint in CASE_RELATED_HINTS) or "evid_" in lowered:
+        return True
+    if evidence_id:
+        return not any(hint in lowered for hint in AMBIENT_HINTS)
+    return False
 
 
 class GeminiLLMService(LocalLLMService):
@@ -179,6 +251,127 @@ class GeminiLLMService(LocalLLMService):
             clues_unlocked=[str(item) for item in clues_raw],
             reasoning={"mode": "gemini", "model": self._model, "system_prompt": system_prompt, "user_prompt": user_prompt},
         )
+
+
+class HostedChatLLMService(LocalLLMService):
+    """Shared helpers for hosted chat-completion style providers."""
+
+    provider_name = "hosted"
+
+    def __init__(self, api_key: str = "", model: str = "") -> None:
+        super().__init__()
+        self._api_key = api_key
+        self._model = model
+
+    def is_available(self) -> bool:
+        return bool(self._api_key and self._model)
+
+    def generate(self, request: DialogueRequest, suggested_clues: List[str] | None = None) -> GeneratedDialogue:
+        if not self.is_available():
+            raise RuntimeError(f"{self.provider_name} generation requested but API key is not configured")
+
+        system_prompt, user_prompt = _build_generation_prompts(request, suggested_clues or [])
+        try:
+            raw_text = self._request_text(system_prompt, user_prompt)
+        except requests.RequestException as exc:
+            logger.warning("%s request failed: %s", self.provider_name.capitalize(), exc)
+            fallback = super().generate(request, suggested_clues)
+            return GeneratedDialogue(
+                response=fallback.response,
+                clues_unlocked=fallback.clues_unlocked,
+                reasoning={"mode": f"fallback_from_{self.provider_name}_request_error", "error": str(exc)},
+            )
+
+        payload = _parse_model_payload(raw_text)
+        if payload is None:
+            fallback = super().generate(request, suggested_clues)
+            return GeneratedDialogue(
+                response=fallback.response,
+                clues_unlocked=fallback.clues_unlocked,
+                reasoning={"mode": f"fallback_from_{self.provider_name}_invalid_json", "raw_text": raw_text},
+            )
+
+        response_text = str(payload.get("response", "")).strip()
+        clues_raw = payload.get("clues_unlocked", [])
+        if not isinstance(clues_raw, list) or not all(isinstance(item, str) for item in clues_raw):
+            fallback = super().generate(request, suggested_clues)
+            return GeneratedDialogue(
+                response=fallback.response,
+                clues_unlocked=fallback.clues_unlocked,
+                reasoning={"mode": f"fallback_from_{self.provider_name}_invalid_clue_array", "raw_text": raw_text},
+            )
+        if not response_text:
+            fallback = super().generate(request, suggested_clues)
+            return GeneratedDialogue(
+                response=fallback.response,
+                clues_unlocked=fallback.clues_unlocked,
+                reasoning={"mode": f"fallback_from_{self.provider_name}_empty_response", "raw_text": raw_text},
+            )
+
+        return GeneratedDialogue(
+            response=response_text,
+            clues_unlocked=[str(item) for item in clues_raw],
+            reasoning={"mode": self.provider_name, "model": self._model, "system_prompt": system_prompt, "user_prompt": user_prompt},
+        )
+
+    def _request_text(self, system_prompt: str, user_prompt: str) -> str:
+        raise NotImplementedError
+
+
+class GroqLLMService(HostedChatLLMService):
+    provider_name = "groq"
+
+    def _request_text(self, system_prompt: str, user_prompt: str) -> str:
+        response = requests.post(
+            GROQ_ENDPOINT,
+            headers={
+                "Authorization": f"Bearer {self._api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": self._model,
+                "temperature": 0.25,
+                "top_p": 0.9,
+                "max_tokens": 160,
+                "response_format": {"type": "json_object"},
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+            },
+            timeout=30,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        return _extract_openai_candidate_text(payload)
+
+
+class OpenRouterLLMService(HostedChatLLMService):
+    provider_name = "openrouter"
+
+    def _request_text(self, system_prompt: str, user_prompt: str) -> str:
+        response = requests.post(
+            OPENROUTER_ENDPOINT,
+            headers={
+                "Authorization": f"Bearer {self._api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": self._model,
+                "temperature": 0.25,
+                "top_p": 0.9,
+                "max_tokens": 160,
+                "response_format": {"type": "json_object"},
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+            },
+            timeout=30,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        return _extract_openai_candidate_text(payload)
 
 
 class LlamaCppLLMService(LocalLLMService):
@@ -278,7 +471,11 @@ def _build_generation_prompts(request: DialogueRequest, suggested_clues: Sequenc
         f"{GAME_BACKGROUND}\n\n"
         "You are generating one NPC dialogue turn for the interrogation system.\n"
         "Stay fully in character. Keep the answer grounded, concise, and emotionally consistent with the NPC.\n"
-        "The response must be 1-2 sentences and must not invent facts, clues, locations, timelines, or motives beyond the supplied context.\n"
+        "The response must be 1-2 sentences.\n"
+        "If the player asks about the investigation, do not invent facts, clues, locations, timelines, or motives beyond the supplied context.\n"
+        "If the player asks an ordinary small-talk or personal question that is not about the case, answer naturally in character.\n"
+        "For those non-investigation questions, you may improvise harmless everyday preferences, mood, habits, opinions, or observations that fit the NPC's personality and situation.\n"
+        "Do not force evidence, clues, or murder details into a small-talk answer unless the player is actually asking about the case.\n"
         "If the player asks something outside this NPC's knowledge, answer narrowly, deflect, or admit uncertainty while staying in character.\n"
         "Return JSON only with exactly two keys: response and clues_unlocked.\n"
         "clues_unlocked must be a JSON array of evidence ids and may only include ids from Allowed Evidence Knowledge.\n"
@@ -342,6 +539,20 @@ def _extract_candidate_text(payload: dict[str, object]) -> str:
         if isinstance(part, dict) and isinstance(part.get("text"), str):
             chunks.append(str(part["text"]))
     return "\n".join(chunks).strip()
+
+
+def _extract_openai_candidate_text(payload: dict[str, object]) -> str:
+    choices = payload.get("choices", [])
+    if not isinstance(choices, list) or not choices:
+        return ""
+    first = choices[0]
+    if not isinstance(first, dict):
+        return ""
+    message = first.get("message", {})
+    if not isinstance(message, dict):
+        return ""
+    content = message.get("content", "")
+    return str(content).strip() if isinstance(content, str) else ""
 
 
 def _parse_model_payload(raw_text: str) -> dict[str, object] | None:

@@ -17,7 +17,13 @@ class DialogueValidator:
     def __init__(self) -> None:
         self._embedding_model = SimpleEmbeddingModel()
 
-    def sanitize_response(self, text: str, fallback_text: str, grounding_facts: Iterable[str]) -> str:
+    def sanitize_response(
+        self,
+        text: str,
+        fallback_text: str,
+        grounding_facts: Iterable[str],
+        require_grounding: bool = True,
+    ) -> str:
         cleaned = " ".join(text.strip().split())
         if not cleaned:
             return fallback_text
@@ -29,13 +35,14 @@ class DialogueValidator:
         if len(cleaned) > 280:
             cleaned = cleaned[:277].rstrip() + "..."
 
-        facts_blob = " ".join(grounding_facts)
-        similarity = self._embedding_model.cosine_similarity(
-            self._embedding_model.embed(cleaned),
-            self._embedding_model.embed(facts_blob),
-        )
-        if facts_blob and similarity < 0.08:
-            return fallback_text
+        if require_grounding:
+            facts_blob = " ".join(grounding_facts)
+            similarity = self._embedding_model.cosine_similarity(
+                self._embedding_model.embed(cleaned),
+                self._embedding_model.embed(facts_blob),
+            )
+            if facts_blob and similarity < 0.08:
+                return fallback_text
         return cleaned
 
     @staticmethod
