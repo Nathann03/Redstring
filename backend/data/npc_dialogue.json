@@ -7,7 +7,12 @@
       "weapon": "Wrench",
       "location": "Tidal Pool Lab"
     },
-    "possible_weapons": ["EVID_02", "EVID_04", "EVID_05", "EVID_06"]
+    "possible_weapons": [
+      "EVID_02",
+      "EVID_04",
+      "EVID_05",
+      "EVID_06"
+    ]
   },
   "evidence_data": [
     {
@@ -93,81 +98,334 @@
       "npc_id": "james_okoye",
       "responses": [
         {
-          "source_id": "james_evid_01",
+          "source_id": "james_okoye_evid_01_1",
           "evidence_id": "EVID_01",
           "text": "Yes, the wrench is definitely missing. I use it all the time for calibrating the sensors, but I haven't touched it since yesterday afternoon. Someone else must have taken it.",
-          "embedding_text": "What does James think about the missing wrench pegboard?",
-          "tags": ["evidence", "equipment_room"]
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does james okoye say? Yes, the wrench is definitely missing. I use it all the time for calibrating the sensors, but I haven't touched it since yesterday afternoon. Someone else must have taken it.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
         },
         {
-          "source_id": "james_evid_02",
+          "source_id": "james_okoye_evid_01_2",
+          "evidence_id": "EVID_01",
+          "text": "I keep my tools organized meticulously. That empty hook bothers me more than you'd think. The wrench should be there.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does james okoye say? I keep my tools organized meticulously. That empty hook bothers me more than you'd think. The wrench should be there.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_01_3",
+          "evidence_id": "EVID_01",
+          "text": "I noticed it was gone this morning when I went to do maintenance. Thought maybe I'd misplaced it, but no, someone took it.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does james okoye say? I noticed it was gone this morning when I went to do maintenance. Thought maybe I'd misplaced it, but no, someone took it.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_02_1",
           "evidence_id": "EVID_02",
-          "text": "That's my wrench from the equipment room. But why would it be down here? Someone brought it all the way down to the lab.",
-          "embedding_text": "What does James say about the wrench on the ground?",
-          "tags": ["evidence", "weapon"]
+          "text": "That's my wrench from the equipment room! But why would it be down here? Someone brought it all the way down to the lab.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does james okoye say? That's my wrench from the equipment room! But why would it be down here? Someone brought it all the way down to the lab.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "james_evid_03",
+          "source_id": "james_okoye_evid_02_2",
+          "evidence_id": "EVID_02",
+          "text": "I recognize the markings on the handle. That's definitely mine. What's it doing in the tidal pool lab?",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does james okoye say? I recognize the markings on the handle. That's definitely mine. What's it doing in the tidal pool lab?",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_02_3",
+          "evidence_id": "EVID_02",
+          "text": "Someone took my wrench and brought it down here. Morgan never used my tools without asking.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does james okoye say? Someone took my wrench and brought it down here. Morgan never used my tools without asking.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_03_1",
           "evidence_id": "EVID_03",
-          "text": "The head trauma and the pruning mean he's been here all night.",
-          "embedding_text": "What does James notice about Morgan's body?",
-          "tags": ["evidence", "body"]
+          "text": "The head trauma... and the pruning means he's been here all night.",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does james okoye say? The head trauma... and the pruning means he's been here all night.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
         },
         {
-          "source_id": "james_evid_04",
+          "source_id": "james_okoye_evid_03_2",
+          "evidence_id": "EVID_03",
+          "text": "Blunt force trauma to the occipital region. The wound pattern suggests a concentrated impact from something dense and heavy.",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does james okoye say? Blunt force trauma to the occipital region. The wound pattern suggests a concentrated impact from something dense and heavy.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_03_3",
+          "evidence_id": "EVID_03",
+          "text": "He's been here for hours. The skin pruning from the humidity takes time to develop like that.",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does james okoye say? He's been here for hours. The skin pruning from the humidity takes time to develop like that.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_04_1",
           "evidence_id": "EVID_04",
           "text": "That's industrial fishing line. Strong enough to be dangerous if misused.",
-          "embedding_text": "What does James say about the fishing wire?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What do you make of the fishing wire? What does james okoye say? That's industrial fishing line. Strong enough to be dangerous if misused.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "james_evid_05",
+          "source_id": "james_okoye_evid_04_2",
+          "evidence_id": "EVID_04",
+          "text": "That wire could cut through skin easily under tension. But it's clearly not been moved.",
+          "embedding_text": "What do you make of the fishing wire? What does james okoye say? That wire could cut through skin easily under tension. But it's clearly not been moved.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_04_3",
+          "evidence_id": "EVID_04",
+          "text": "Fishing wire like that is used for heavy loads. Catch would know more about it than I would.",
+          "embedding_text": "What do you make of the fishing wire? What does james okoye say? Fishing wire like that is used for heavy loads. Catch would know more about it than I would.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_05_1",
           "evidence_id": "EVID_05",
           "text": "That letter opener has been on that desk for years. Standard office supply.",
-          "embedding_text": "What does James say about the letter opener?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What do you think about the letter opener? What does james okoye say? That letter opener has been on that desk for years. Standard office supply.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "james_evid_06",
+          "source_id": "james_okoye_evid_05_2",
+          "evidence_id": "EVID_05",
+          "text": "I've used that letter opener myself for mail. It's always been there.",
+          "embedding_text": "What do you think about the letter opener? What does james okoye say? I've used that letter opener myself for mail. It's always been there.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_05_3",
+          "evidence_id": "EVID_05",
+          "text": "It's sharp enough to be dangerous, I suppose, but it's just office equipment.",
+          "embedding_text": "What do you think about the letter opener? What does james okoye say? It's sharp enough to be dangerous, I suppose, but it's just office equipment.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_06_1",
           "evidence_id": "EVID_06",
           "text": "That's one of our research chemicals. We use it for testing water contamination levels. Dangerous stuff in the wrong context.",
-          "embedding_text": "What does James say about the chemical vial?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does james okoye say? That's one of our research chemicals. We use it for testing water contamination levels. Dangerous stuff in the wrong context.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "james_evid_07",
+          "source_id": "james_okoye_evid_06_2",
+          "evidence_id": "EVID_06",
+          "text": "That chemical is toxic in high concentrations, but we use it safely for analysis. Standard procedure.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does james okoye say? That chemical is toxic in high concentrations, but we use it safely for analysis. Standard procedure.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_06_3",
+          "evidence_id": "EVID_06",
+          "text": "We keep several research chemicals on hand. That one's for heavy metal detection in water samples.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does james okoye say? We keep several research chemicals on hand. That one's for heavy metal detection in water samples.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_07_1",
           "evidence_id": "EVID_07",
           "text": "Morgan was planning to be in the tidal pool lab at 10 PM last night. He often worked late when the tide was right for sampling.",
-          "embedding_text": "What does James say about Morgan's research station log?",
-          "tags": ["evidence", "timeline"]
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does james okoye say? Morgan was planning to be in the tidal pool lab at 10 PM last night. He often worked late when the tide was right for sampling.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
         },
         {
-          "source_id": "james_evid_08",
+          "source_id": "james_okoye_evid_07_2",
+          "evidence_id": "EVID_07",
+          "text": "10 PM for high tide sampling. That was typical for Morgan. He was meticulous about timing.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does james okoye say? 10 PM for high tide sampling. That was typical for Morgan. He was meticulous about timing.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_07_3",
+          "evidence_id": "EVID_07",
+          "text": "Morgan's schedule was predictable. He always logged his sampling times in advance.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does james okoye say? Morgan's schedule was predictable. He always logged his sampling times in advance.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_08_1",
           "evidence_id": "EVID_08",
-          "text": "Those boot prints have mud and sand, and that rope is drenched with seaweed on it. Whoever made those prints was down at the water's edge during the storm for hours, not just a quick trip outside.",
-          "embedding_text": "What does James infer from the muddy boot prints and wet rope?",
-          "tags": ["evidence", "alibi"]
+          "text": "Those boot prints have mud and sand, and that rope is drenched with seaweed on it. Seaweed only gets tossed up onto the dock during rough waves. Whoever made those prints was down at the water's edge during the storm for hours, not just a quick trip outside.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does james okoye say? Those boot prints have mud and sand, and that rope is drenched with seaweed on it. Seaweed only gets tossed up onto the dock during rough waves. Whoever made those prints was down at the water's edge during the storm for hours, not just a quick trip outside.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
         },
         {
-          "source_id": "james_evid_09",
+          "source_id": "james_okoye_evid_08_2",
+          "evidence_id": "EVID_08",
+          "text": "The sand mixture in those prints is from the beach, not just the immediate grounds. Someone was down by the water for quite a long time.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does james okoye say? The sand mixture in those prints is from the beach, not just the immediate grounds. Someone was down by the water for quite a long time.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_08_3",
+          "evidence_id": "EVID_08",
+          "text": "Fresh seaweed on that rope means it was used recently, during the storm. You don't get seaweed like that unless you're right at the waterline.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does james okoye say? Fresh seaweed on that rope means it was used recently, during the storm. You don't get seaweed like that unless you're right at the waterline.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_09_1",
           "evidence_id": "EVID_09",
-          "text": "Those are my timed water quality tests. You have to collect a sample every thirty minutes, then watch the color change before the next one. I was stuck at this bench from 9 PM to midnight.",
-          "embedding_text": "What does James say about the timed chemical test?",
-          "tags": ["evidence", "alibi"]
+          "text": "Those are my timed water quality tests. You have to collect a sample every thirty minutes, then watch the color change for fifteen to twenty minutes before the next one. I was stuck at this bench from 9 PM to midnight. Can't automate it, you just have to watch and wait.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does james okoye say? Those are my timed water quality tests. You have to collect a sample every thirty minutes, then watch the color change for fifteen to twenty minutes before the next one. I was stuck at this bench from 9 PM to midnight. Can't automate it, you just have to watch and wait.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
         },
         {
-          "source_id": "james_evid_10",
+          "source_id": "james_okoye_evid_09_2",
+          "evidence_id": "EVID_09",
+          "text": "Each tube represents a thirty-minute interval. I had to be present for every single collection and observation. It's tedious but necessary for accurate data.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does james okoye say? Each tube represents a thirty-minute interval. I had to be present for every single collection and observation. It's tedious but necessary for accurate data.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_09_3",
+          "evidence_id": "EVID_09",
+          "text": "You can see the progression of the reaction across the time series. I couldn't have left, or the data would be worthless.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does james okoye say? You can see the progression of the reaction across the time series. I couldn't have left, or the data would be worthless.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_10_1",
           "evidence_id": "EVID_10",
-          "text": "Right, I came up here at midnight after I finished my tests downstairs. Riley and I worked on data analysis together until about 3 AM. But from 9 to midnight, I was in the equipment room taking samples.",
-          "embedding_text": "What does James say about the beacon room security log?",
-          "tags": ["evidence", "alibi"]
+          "text": "Right, I came up here at midnight after I finished my tests downstairs. Riley and I worked on some data analysis together until about 3 AM, then I went to bed. But from 9 to midnight, I was in the equipment room taking samples.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does james okoye say? Right, I came up here at midnight after I finished my tests downstairs. Riley and I worked on some data analysis together until about 3 AM, then I went to bed. But from 9 to midnight, I was in the equipment room taking samples.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
         },
         {
-          "source_id": "james_evid_11",
+          "source_id": "james_okoye_evid_10_2",
+          "evidence_id": "EVID_10",
+          "text": "The log shows exactly when I entered and exited. Riley can confirm we were working together on spreadsheets.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does james okoye say? The log shows exactly when I entered and exited. Riley can confirm we were working together on spreadsheets.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_10_3",
+          "evidence_id": "EVID_10",
+          "text": "Riley and I crunched numbers for a few hours, then I had to sleep. Seems as though Riley only left once we got word of… of what happened to Morgan.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does james okoye say? Riley and I crunched numbers for a few hours, then I had to sleep. Seems as though Riley only left once we got word of… of what happened to Morgan.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_11_1",
           "evidence_id": "EVID_11",
-          "text": "That's Yuki's jacket, and it's pretty wet. That chemical smell is from the treated water in the tidal pool. You'd have to be down there to get that saturated.",
-          "embedding_text": "What does James say about Yuki's damp jacket?",
-          "tags": ["evidence", "yuki"]
+          "text": "That's Yuki's jacket, and it's pretty wet. That chemical smell is from the treated water in the tidal pool. The mist down there gets on everything, but you'd have to be down there to get that saturated.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does james okoye say? That's Yuki's jacket, and it's pretty wet. That chemical smell is from the treated water in the tidal pool. The mist down there gets on everything, but you'd have to be down there to get that saturated.",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_11_2",
+          "evidence_id": "EVID_11",
+          "text": "The dampness pattern on that jacket is consistent with exposure to the tidal pool environment. The chemical treatment we use has a distinctive smell.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does james okoye say? The dampness pattern on that jacket is consistent with exposure to the tidal pool environment. The chemical treatment we use has a distinctive smell.",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
+        },
+        {
+          "source_id": "james_okoye_evid_11_3",
+          "evidence_id": "EVID_11",
+          "text": "I know that smell. It's from our research water treatment. You only smell like that if you've been in the tidal pool lab.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does james okoye say? I know that smell. It's from our research water treatment. You only smell like that if you've been in the tidal pool lab.",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
         }
       ]
     },
@@ -175,81 +433,334 @@
       "npc_id": "catch_wallace",
       "responses": [
         {
-          "source_id": "catch_evid_01",
+          "source_id": "catch_wallace_evid_01_1",
           "evidence_id": "EVID_01",
-          "text": "Tools and equipment are not my department. You'd have to ask the science folks about their gear.",
-          "embedding_text": "What does Catch say about the missing wrench pegboard?",
-          "tags": ["evidence", "equipment_room"]
+          "text": "Tools and equipment? That's not my department. You'd have to ask the science folks about their gear.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does catch wallace say? Tools and equipment? That's not my department. You'd have to ask the science folks about their gear.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
         },
         {
-          "source_id": "catch_evid_02",
+          "source_id": "catch_wallace_evid_01_2",
+          "evidence_id": "EVID_01",
+          "text": "I don't mess with James's tools. He's particular about that stuff.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does catch wallace say? I don't mess with James's tools. He's particular about that stuff.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_01_3",
+          "evidence_id": "EVID_01",
+          "text": "A missing wrench? Could be anywhere. People borrow things around here all the time.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does catch wallace say? A missing wrench? Could be anywhere. People borrow things around here all the time.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_02_1",
           "evidence_id": "EVID_02",
           "text": "A wrench just lying on the ground? Someone brought it down here for a reason.",
-          "embedding_text": "What does Catch say about the wrench on the ground?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does catch wallace say? A wrench just lying on the ground? Someone brought it down here for a reason.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "catch_evid_03",
+          "source_id": "catch_wallace_evid_02_2",
+          "evidence_id": "EVID_02",
+          "text": "That's not where you'd normally find a wrench. Someone left it there, or dropped it.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does catch wallace say? That's not where you'd normally find a wrench. Someone left it there, or dropped it.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_02_3",
+          "evidence_id": "EVID_02",
+          "text": "Looks out of place. Morgan didn't work with tools like that down here.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does catch wallace say? Looks out of place. Morgan didn't work with tools like that down here.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_03_1",
           "evidence_id": "EVID_03",
           "text": "Hit from behind. Whoever did this came up on him while he was working. And he's been here all night by the looks of it.",
-          "embedding_text": "What does Catch notice about Morgan's body?",
-          "tags": ["evidence", "body"]
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does catch wallace say? Hit from behind. Whoever did this came up on him while he was working. And he's been here all night by the looks of it.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
         },
         {
-          "source_id": "catch_evid_04",
+          "source_id": "catch_wallace_evid_03_2",
+          "evidence_id": "EVID_03",
+          "text": "I've seen drowning victims before. This wasn't drowning. Someone hit him hard.",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does catch wallace say? I've seen drowning victims before. This wasn't drowning. Someone hit him hard.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_03_3",
+          "evidence_id": "EVID_03",
+          "text": "Poor bastard never saw it coming. Attacked from behind while he was working.",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does catch wallace say? Poor bastard never saw it coming. Attacked from behind while he was working.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_04_1",
           "evidence_id": "EVID_04",
           "text": "That's old supply line from my boat. Been sitting there collecting dust since last season. Nobody's touched it.",
-          "embedding_text": "What does Catch say about the fishing wire?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What do you make of the fishing wire? What does catch wallace say? That's old supply line from my boat. Been sitting there collecting dust since last season. Nobody's touched it.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "catch_evid_05",
+          "source_id": "catch_wallace_evid_04_2",
+          "evidence_id": "EVID_04",
+          "text": "I can tell by the dust that wire hasn't been moved in months. I know my own equipment.",
+          "embedding_text": "What do you make of the fishing wire? What does catch wallace say? I can tell by the dust that wire hasn't been moved in months. I know my own equipment.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_04_3",
+          "evidence_id": "EVID_04",
+          "text": "That's spare rigging line. Haven't needed it in ages. It's just been sitting there.",
+          "embedding_text": "What do you make of the fishing wire? What does catch wallace say? That's spare rigging line. Haven't needed it in ages. It's just been sitting there.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_05_1",
           "evidence_id": "EVID_05",
           "text": "That's a fancy letter opener. Sharp looking thing.",
-          "embedding_text": "What does Catch say about the letter opener?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What do you think about the letter opener? What does catch wallace say? That's a fancy letter opener. Sharp looking thing.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "catch_evid_06",
+          "source_id": "catch_wallace_evid_05_2",
+          "evidence_id": "EVID_05",
+          "text": "Looks expensive. Probably came with the office furniture.",
+          "embedding_text": "What do you think about the letter opener? What does catch wallace say? Looks expensive. Probably came with the office furniture.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_05_3",
+          "evidence_id": "EVID_05",
+          "text": "I've seen Morgan use that for opening mail and packages.",
+          "embedding_text": "What do you think about the letter opener? What does catch wallace say? I've seen Morgan use that for opening mail and packages.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_06_1",
           "evidence_id": "EVID_06",
           "text": "I don't mess with chemicals. That's way above my pay grade.",
-          "embedding_text": "What does Catch say about the chemical vial?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does catch wallace say? I don't mess with chemicals. That's way above my pay grade.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "catch_evid_07",
+          "source_id": "catch_wallace_evid_06_2",
+          "evidence_id": "EVID_06",
+          "text": "Science stuff. I leave that to the people with degrees.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does catch wallace say? Science stuff. I leave that to the people with degrees.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_06_3",
+          "evidence_id": "EVID_06",
+          "text": "I stay away from anything with warning labels like that.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does catch wallace say? I stay away from anything with warning labels like that.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_07_1",
           "evidence_id": "EVID_07",
           "text": "So Morgan went down to the lab at 10 PM. Makes sense, he was always particular about timing his samples with the tide.",
-          "embedding_text": "What does Catch say about Morgan's research station log?",
-          "tags": ["evidence", "timeline"]
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does catch wallace say? So Morgan went down to the lab at 10 PM. Makes sense, he was always particular about timing his samples with the tide.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
         },
         {
-          "source_id": "catch_evid_08",
+          "source_id": "catch_wallace_evid_07_2",
+          "evidence_id": "EVID_07",
+          "text": "10 PM. That's when it happened, then. Morgan was always working weird hours.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does catch wallace say? 10 PM. That's when it happened, then. Morgan was always working weird hours.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_07_3",
+          "evidence_id": "EVID_07",
+          "text": "I've seen Morgan head down to that lab at all hours. Tides don't wait for daylight.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does catch wallace say? I've seen Morgan head down to that lab at all hours. Tides don't wait for daylight.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_08_1",
           "evidence_id": "EVID_08",
-          "text": "Yeah, that's all mine. I was outside most of the night securing my boat down on the dock. Waves were throwing seaweed everywhere, and that's why I tracked all that sand and mud inside when I finally came back in.",
-          "embedding_text": "What does Catch say about the muddy boot prints and wet rope?",
-          "tags": ["evidence", "alibi"]
+          "text": "Yeah, that's all mine. I was outside most of the night securing my boat down on the dock. Had to use that spare anchor line when my primary started fraying in the wind. Spent hours fighting with the rigging while waves were throwing seaweed everywhere. That's why I tracked all that sand and mud inside when I finally came back in.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does catch wallace say? Yeah, that's all mine. I was outside most of the night securing my boat down on the dock. Had to use that spare anchor line when my primary started fraying in the wind. Spent hours fighting with the rigging while waves were throwing seaweed everywhere. That's why I tracked all that sand and mud inside when I finally came back in.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
         },
         {
-          "source_id": "catch_evid_09",
+          "source_id": "catch_wallace_evid_08_2",
+          "evidence_id": "EVID_08",
+          "text": "My boat's my livelihood. Storm like that could've destroyed her. I wasn't going to just sit inside and hope for the best. Nearly took me the whole goddamn night, but she's secure.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does catch wallace say? My boat's my livelihood. Storm like that could've destroyed her. I wasn't going to just sit inside and hope for the best. Nearly took me the whole goddamn night, but she's secure.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_08_3",
+          "evidence_id": "EVID_08",
+          "text": "Those are my prints, my rope. I was down at the dock all night. Got soaked, got covered in seaweed, got the boat secured. That's all.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does catch wallace say? Those are my prints, my rope. I was down at the dock all night. Got soaked, got covered in seaweed, got the boat secured. That's all.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_09_1",
           "evidence_id": "EVID_09",
           "text": "Sounds boring as hell. If James says he had to stand there watching tubes all night, I believe him.",
-          "embedding_text": "What does Catch say about the timed chemical test?",
-          "tags": ["evidence", "james"]
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does catch wallace say? Sounds boring as hell. If James says he had to stand there watching tubes all night, I believe him.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
         },
         {
-          "source_id": "catch_evid_10",
+          "source_id": "catch_wallace_evid_09_2",
+          "evidence_id": "EVID_09",
+          "text": "I'd go crazy having to stare at test tubes for hours. James has more patience than me.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does catch wallace say? I'd go crazy having to stare at test tubes for hours. James has more patience than me.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_09_3",
+          "evidence_id": "EVID_09",
+          "text": "Science work. Lots of waiting and watching, from what I've seen.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does catch wallace say? Science work. Lots of waiting and watching, from what I've seen.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_10_1",
           "evidence_id": "EVID_10",
           "text": "So James came up to the beacon room at midnight. That's after Morgan was already dead.",
-          "embedding_text": "What does Catch say about the beacon room security log?",
-          "tags": ["evidence", "james"]
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does catch wallace say? So James came up to the beacon room at midnight. That's after Morgan was already dead.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
         },
         {
-          "source_id": "catch_evid_11",
+          "source_id": "catch_wallace_evid_10_2",
+          "evidence_id": "EVID_10",
+          "text": "James wasn't up there during the murder. The timing doesn't work.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does catch wallace say? James wasn't up there during the murder. The timing doesn't work.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_10_3",
+          "evidence_id": "EVID_10",
+          "text": "Riley was locked in that room all night. James came and went later.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does catch wallace say? Riley was locked in that room all night. James came and went later.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_11_1",
           "evidence_id": "EVID_11",
-          "text": "That jacket's more than just damp from humidity. I know that smell. That's the treated water from the research pool.",
-          "embedding_text": "What does Catch say about Yuki's damp jacket?",
-          "tags": ["evidence", "yuki"]
+          "text": "That jacket's more than just damp from humidity. And I know that smell, that's the treated water from the research pool. I haul samples of it all the time.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does catch wallace say? That jacket's more than just damp from humidity. And I know that smell, that's the treated water from the research pool. I haul samples of it all the time.",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_11_2",
+          "evidence_id": "EVID_11",
+          "text": "I've carried enough samples to recognize that chemical smell. That's from the pool water, not just humidity.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does catch wallace say? I've carried enough samples to recognize that chemical smell. That's from the pool water, not just humidity.",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
+        },
+        {
+          "source_id": "catch_wallace_evid_11_3",
+          "evidence_id": "EVID_11",
+          "text": "That jacket's been somewhere wet. And it smells like the research chemicals from downstairs.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does catch wallace say? That jacket's been somewhere wet. And it smells like the research chemicals from downstairs.",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
         }
       ]
     },
@@ -257,81 +768,334 @@
       "npc_id": "yuki_tanaka",
       "responses": [
         {
-          "source_id": "yuki_evid_01",
+          "source_id": "yuki_tanaka_evid_01_1",
           "evidence_id": "EVID_01",
           "text": "I'm not familiar with maintenance equipment. My work is administrative, not technical.",
-          "embedding_text": "What does Yuki say about the missing wrench pegboard?",
-          "tags": ["evidence", "equipment_room"]
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does yuki tanaka say? I'm not familiar with maintenance equipment. My work is administrative, not technical.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
         },
         {
-          "source_id": "yuki_evid_02",
+          "source_id": "yuki_tanaka_evid_01_2",
+          "evidence_id": "EVID_01",
+          "text": "I wouldn't know what tools are kept where. That's outside my purview.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does yuki tanaka say? I wouldn't know what tools are kept where. That's outside my purview.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_01_3",
+          "evidence_id": "EVID_01",
+          "text": "Tool inventory isn't part of my compliance review.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does yuki tanaka say? Tool inventory isn't part of my compliance review.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_02_1",
           "evidence_id": "EVID_02",
-          "text": "It appears someone transported a tool to this location.",
-          "embedding_text": "What does Yuki say about the wrench on the ground?",
-          "tags": ["evidence", "weapon"]
+          "text": "It appears someone moved a tool out of its designated location.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does yuki tanaka say? It appears someone moved a tool out of its designated location.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "yuki_evid_03",
+          "source_id": "yuki_tanaka_evid_02_2",
+          "evidence_id": "EVID_02",
+          "text": "The wrench's presence here is inconsistent with standard laboratory equipment.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does yuki tanaka say? The wrench's presence here is inconsistent with standard laboratory equipment.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_02_3",
+          "evidence_id": "EVID_02",
+          "text": "Someone brought that down from the equipment room. Perhaps something needed maintenance?",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does yuki tanaka say? Someone brought that down from the equipment room. Perhaps something needed maintenance?",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_03_1",
           "evidence_id": "EVID_03",
           "text": "The extended time suggests the incident occurred many hours ago, likely late evening.",
-          "embedding_text": "What does Yuki say about Morgan's body?",
-          "tags": ["evidence", "body"]
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does yuki tanaka say? The extended time suggests the incident occurred many hours ago, likely late evening.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
         },
         {
-          "source_id": "yuki_evid_04",
+          "source_id": "yuki_tanaka_evid_03_2",
+          "evidence_id": "EVID_03",
+          "text": "The physical evidence indicates he's been deceased for an extended period.",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does yuki tanaka say? The physical evidence indicates he's been deceased for an extended period.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_03_3",
+          "evidence_id": "EVID_03",
+          "text": "Based on the condition of the body, this happened well before morning.",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does yuki tanaka say? Based on the condition of the body, this happened well before morning.",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_04_1",
           "evidence_id": "EVID_04",
           "text": "I'm not familiar with fishing equipment.",
-          "embedding_text": "What does Yuki say about the fishing wire?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What do you make of the fishing wire? What does yuki tanaka say? I'm not familiar with fishing equipment.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "yuki_evid_05",
+          "source_id": "yuki_tanaka_evid_04_2",
+          "evidence_id": "EVID_04",
+          "text": "Maritime supplies aren't part of my expertise.",
+          "embedding_text": "What do you make of the fishing wire? What does yuki tanaka say? Maritime supplies aren't part of my expertise.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_04_3",
+          "evidence_id": "EVID_04",
+          "text": "I wouldn't know the purpose of fishing wire.",
+          "embedding_text": "What do you make of the fishing wire? What does yuki tanaka say? I wouldn't know the purpose of fishing wire.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_05_1",
           "evidence_id": "EVID_05",
-          "text": "Standard office equipment. I use one regularly for mail.",
-          "embedding_text": "What does Yuki say about the letter opener?",
-          "tags": ["evidence", "weapon"]
+          "text": "Standard office equipment. I use one regularly for mail myself.",
+          "embedding_text": "What do you think about the letter opener? What does yuki tanaka say? Standard office equipment. I use one regularly for mail myself.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "yuki_evid_06",
+          "source_id": "yuki_tanaka_evid_05_2",
+          "evidence_id": "EVID_05",
+          "text": "That letter opener is part of the standard desk supplies.",
+          "embedding_text": "What do you think about the letter opener? What does yuki tanaka say? That letter opener is part of the standard desk supplies.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_05_3",
+          "evidence_id": "EVID_05",
+          "text": "It's functional for correspondence. Nothing unusual about it.",
+          "embedding_text": "What do you think about the letter opener? What does yuki tanaka say? It's functional for correspondence. Nothing unusual about it.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_06_1",
           "evidence_id": "EVID_06",
           "text": "Research chemicals are standard in a facility like this.",
-          "embedding_text": "What does Yuki say about the chemical vial?",
-          "tags": ["evidence", "weapon"]
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does yuki tanaka say? Research chemicals are standard in a facility like this.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "yuki_evid_07",
+          "source_id": "yuki_tanaka_evid_06_2",
+          "evidence_id": "EVID_06",
+          "text": "Laboratories require various chemical reagents for testing purposes.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does yuki tanaka say? Laboratories require various chemical reagents for testing purposes.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_06_3",
+          "evidence_id": "EVID_06",
+          "text": "Chemical storage and usage would be documented in the facility's safety protocols.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does yuki tanaka say? Chemical storage and usage would be documented in the facility's safety protocols.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_07_1",
           "evidence_id": "EVID_07",
           "text": "Morgan's schedule indicated he would be in the tidal pool lab at 10 PM. A predictable routine.",
-          "embedding_text": "What does Yuki say about Morgan's research station log?",
-          "tags": ["evidence", "timeline"]
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does yuki tanaka say? Morgan's schedule indicated he would be in the tidal pool lab at 10 PM. A predictable routine.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
         },
         {
-          "source_id": "yuki_evid_08",
+          "source_id": "yuki_tanaka_evid_07_2",
+          "evidence_id": "EVID_07",
+          "text": "Consistent documentation of activities. Morgan was thorough about logging.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does yuki tanaka say? Consistent documentation of activities. Morgan was thorough about logging.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_07_3",
+          "evidence_id": "EVID_07",
+          "text": "The log provides a clear timeline of Morgan's intended movements.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does yuki tanaka say? The log provides a clear timeline of Morgan's intended movements.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_08_1",
           "evidence_id": "EVID_08",
           "text": "Those appear to be work boots. The rope's condition suggests extensive outdoor exposure during severe weather. I don't own footwear like that and I certainly wasn't outside.",
-          "embedding_text": "What does Yuki say about the muddy boot prints and wet rope?",
-          "tags": ["evidence", "catch"]
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does yuki tanaka say? Those appear to be work boots. The rope's condition suggests extensive outdoor exposure during severe weather. I don't own footwear like that and I certainly wasn't outside.",
+          "tags": [
+            "evidence",
+            "catch"
+          ]
         },
         {
-          "source_id": "yuki_evid_09",
+          "source_id": "yuki_tanaka_evid_08_2",
+          "evidence_id": "EVID_08",
+          "text": "The evidence indicates someone was engaged in maritime activities during the storm.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does yuki tanaka say? The evidence indicates someone was engaged in maritime activities during the storm.",
+          "tags": [
+            "evidence",
+            "catch"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_08_3",
+          "evidence_id": "EVID_08",
+          "text": "I don't have boots like those. My footwear is professional, not industrial. Do you honestly believe my shoes are that large?",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does yuki tanaka say? I don't have boots like those. My footwear is professional, not industrial. Do you honestly believe my shoes are that large?",
+          "tags": [
+            "evidence",
+            "catch"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_09_1",
           "evidence_id": "EVID_09",
-          "text": "A manual observation protocol would require continuous presence. Dr. Finnegan would need to remain at the station.",
-          "embedding_text": "What does Yuki say about the timed chemical test?",
-          "tags": ["evidence", "james"]
+          "text": "A manual observation protocol would require continuous presence. Dr. Finnegan would need to remain at the station, to my knowledge.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does yuki tanaka say? A manual observation protocol would require continuous presence. Dr. Finnegan would need to remain at the station, to my knowledge.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
         },
         {
-          "source_id": "yuki_evid_10",
+          "source_id": "yuki_tanaka_evid_09_2",
+          "evidence_id": "EVID_09",
+          "text": "Time-series data collection requires uninterrupted monitoring. Standard research methodology.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does yuki tanaka say? Time-series data collection requires uninterrupted monitoring. Standard research methodology.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_09_3",
+          "evidence_id": "EVID_09",
+          "text": "The test sequence provides documented proof of Dr. Finnegan's location during the relevant timeframe.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does yuki tanaka say? The test sequence provides documented proof of Dr. Finnegan's location during the relevant timeframe.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_10_1",
           "evidence_id": "EVID_10",
-          "text": "Dr. Finnegan's access log shows he entered the beacon room at midnight, after the estimated time of death.",
-          "embedding_text": "What does Yuki say about the beacon room security log?",
-          "tags": ["evidence", "james"]
+          "text": "Dr. Okoye's access log shows he entered the beacon room at midnight, after the estimated time of death.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does yuki tanaka say? Dr. Okoye's access log shows he entered the beacon room at midnight, after the estimated time of death.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
         },
         {
-          "source_id": "yuki_evid_11",
+          "source_id": "yuki_tanaka_evid_10_2",
+          "evidence_id": "EVID_10",
+          "text": "The electronic records provide a clear timeline. Dr. Finnegan's movements are documented.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does yuki tanaka say? The electronic records provide a clear timeline. Dr. Finnegan's movements are documented.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_10_3",
+          "evidence_id": "EVID_10",
+          "text": "Riley Okoye remained in the beacon room continuously. Dr. Finnegan joined later.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does yuki tanaka say? Riley Okoye remained in the beacon room continuously. Dr. Finnegan joined later.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_11_1",
           "evidence_id": "EVID_11",
           "text": "That's my jacket. The lighthouse environment is quite humid, especially during storms. Condensation accumulates on clothing.",
-          "embedding_text": "What does Yuki say about the damp jacket?",
-          "tags": ["evidence", "alibi"]
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does yuki tanaka say? That's my jacket. The lighthouse environment is quite humid, especially during storms. Condensation accumulates on clothing.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_11_2",
+          "evidence_id": "EVID_11",
+          "text": "Humidity levels during the storm were significant. Moisture accumulation is to be expected.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does yuki tanaka say? Humidity levels during the storm were significant. Moisture accumulation is to be expected.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
+        },
+        {
+          "source_id": "yuki_tanaka_evid_11_3",
+          "evidence_id": "EVID_11",
+          "text": "I may have hung it near a vent or humid area. The lighthouse has poor climate control.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does yuki tanaka say? I may have hung it near a vent or humid area. The lighthouse has poor climate control.",
+          "tags": [
+            "evidence",
+            "alibi"
+          ]
         }
       ]
     },
@@ -339,81 +1103,334 @@
       "npc_id": "riley_chen",
       "responses": [
         {
-          "source_id": "riley_evid_01",
+          "source_id": "riley_chen_evid_01_1",
           "evidence_id": "EVID_01",
-          "text": "Oh, um, I don't really use tools like that. I'm mostly doing data entry and organizing files. That's more James's area.",
-          "embedding_text": "What does Riley say about the missing wrench pegboard?",
-          "tags": ["evidence", "equipment_room"]
+          "text": "Oh, um, I don't really use tools like that? I'm mostly just doing data entry and organizing files. That's more James's area.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does riley chen say? Oh, um, I don't really use tools like that? I'm mostly just doing data entry and organizing files. That's more James's area.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
         },
         {
-          "source_id": "riley_evid_02",
+          "source_id": "riley_chen_evid_01_2",
+          "evidence_id": "EVID_01",
+          "text": "I've seen James use that wrench before for the sensors. He's really careful with his equipment.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does riley chen say? I've seen James use that wrench before for the sensors. He's really careful with his equipment.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_01_3",
+          "evidence_id": "EVID_01",
+          "text": "I wouldn't even know how to use a wrench like that. I'm not very handy with tools.",
+          "embedding_text": "What happened to the missing wrench? Why is the pegboard hook empty? What does riley chen say? I wouldn't even know how to use a wrench like that. I'm not very handy with tools.",
+          "tags": [
+            "evidence",
+            "equipment_room"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_02_1",
           "evidence_id": "EVID_02",
-          "text": "Why would a wrench be in the tidal pool lab? Morgan didn't do mechanical work down there. He was focused on water samples.",
-          "embedding_text": "What does Riley say about the wrench on the ground?",
-          "tags": ["evidence", "weapon"]
+          "text": "Why would a wrench be in the tidal pool lab? Morgan didn't do mechanical work down here, he was focused on water samples...",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does riley chen say? Why would a wrench be in the tidal pool lab? Morgan didn't do mechanical work down here, he was focused on water samples...",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "riley_evid_03",
+          "source_id": "riley_chen_evid_02_2",
+          "evidence_id": "EVID_02",
+          "text": "That's really weird. Morgan used beakers and test tubes down here, not wrenches.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does riley chen say? That's really weird. Morgan used beakers and test tubes down here, not wrenches.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_02_3",
+          "evidence_id": "EVID_02",
+          "text": "I've never seen Morgan use tools like that. He always said he was bad at fixing things.",
+          "embedding_text": "Why is the wrench on the ground? What is the wrench doing in the tidal pool lab? What does riley chen say? I've never seen Morgan use tools like that. He always said he was bad at fixing things.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_03_1",
           "evidence_id": "EVID_03",
-          "text": "Oh god, he was attacked from behind? And he's been here all night? This is horrible.",
-          "embedding_text": "What does Riley notice about Morgan's body?",
-          "tags": ["evidence", "body"]
+          "text": "Oh god, he was attacked from behind? And he's been here all night? This is horrible...",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does riley chen say? Oh god, he was attacked from behind? And he's been here all night? This is horrible...",
+          "tags": [
+            "evidence",
+            "body"
+          ]
         },
         {
-          "source_id": "riley_evid_04",
+          "source_id": "riley_chen_evid_03_2",
+          "evidence_id": "EVID_03",
+          "text": "I can't... I can't look at this. Morgan was so nice to me. Who would do this?",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does riley chen say? I can't... I can't look at this. Morgan was so nice to me. Who would do this?",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_03_3",
+          "evidence_id": "EVID_03",
+          "text": "He's been here alone all night? That's so awful. I wish I'd known, I wish I could have helped...",
+          "embedding_text": "What do you notice about Morgan's body? How long has Morgan been dead? What does riley chen say? He's been here alone all night? That's so awful. I wish I'd known, I wish I could have helped...",
+          "tags": [
+            "evidence",
+            "body"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_04_1",
           "evidence_id": "EVID_04",
-          "text": "Wow, that wire looks really strong and sharp. If that got wrapped around you...",
-          "embedding_text": "What does Riley say about the fishing wire?",
-          "tags": ["evidence", "weapon"]
+          "text": "Wow, that wire looks really strong and sharp. If that got wrapped around you…",
+          "embedding_text": "What do you make of the fishing wire? What does riley chen say? Wow, that wire looks really strong and sharp. If that got wrapped around you…",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "riley_evid_05",
+          "source_id": "riley_chen_evid_04_2",
+          "evidence_id": "EVID_04",
+          "text": "I'd be scared to even touch that. It looks like it could cut you really easily.",
+          "embedding_text": "What do you make of the fishing wire? What does riley chen say? I'd be scared to even touch that. It looks like it could cut you really easily.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_04_3",
+          "evidence_id": "EVID_04",
+          "text": "Catch left some of his boat stuff in the equipment room. Morgan didn't mind.",
+          "embedding_text": "What do you make of the fishing wire? What does riley chen say? Catch left some of his boat stuff in the equipment room. Morgan didn't mind.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_05_1",
           "evidence_id": "EVID_05",
-          "text": "That's really sharp. I always thought it looked kind of dangerous just sitting there.",
-          "embedding_text": "What does Riley say about the letter opener?",
-          "tags": ["evidence", "weapon"]
+          "text": "That's really sharp! I always thought it looked kind of dangerous just sitting there...",
+          "embedding_text": "What do you think about the letter opener? What does riley chen say? That's really sharp! I always thought it looked kind of dangerous just sitting there...",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "riley_evid_06",
+          "source_id": "riley_chen_evid_05_2",
+          "evidence_id": "EVID_05",
+          "text": "I've always been nervous around that thing. It's like a little knife.",
+          "embedding_text": "What do you think about the letter opener? What does riley chen say? I've always been nervous around that thing. It's like a little knife.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_05_3",
+          "evidence_id": "EVID_05",
+          "text": "Morgan used that sometimes to open equipment shipments. It's been there forever.",
+          "embedding_text": "What do you think about the letter opener? What does riley chen say? Morgan used that sometimes to open equipment shipments. It's been there forever.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_06_1",
           "evidence_id": "EVID_06",
-          "text": "Oh, yeah, I use that sometimes for the contamination tests Morgan has me run. You have to be really careful with it. I was using it last night upstairs.",
-          "embedding_text": "What does Riley say about the chemical vial?",
-          "tags": ["evidence", "weapon"]
+          "text": "Oh, yeah, I use that sometimes for the contamination tests Morgan has me run. You have to be really careful with it. I always make sure to seal it tight after. I was using it last night upstairs.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does riley chen say? Oh, yeah, I use that sometimes for the contamination tests Morgan has me run. You have to be really careful with it. I always make sure to seal it tight after. I was using it last night upstairs.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
         },
         {
-          "source_id": "riley_evid_07",
+          "source_id": "riley_chen_evid_06_2",
+          "evidence_id": "EVID_06",
+          "text": "Morgan taught me how to handle that one. You have to wear gloves and measure it really precisely.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does riley chen say? Morgan taught me how to handle that one. You have to wear gloves and measure it really precisely.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_06_3",
+          "evidence_id": "EVID_06",
+          "text": "I'm always super careful with that vial. Morgan drilled safety procedures into me on day one.",
+          "embedding_text": "What is this chemical vial? What is this test tube chemical used for? What does riley chen say? I'm always super careful with that vial. Morgan drilled safety procedures into me on day one.",
+          "tags": [
+            "evidence",
+            "weapon"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_07_1",
           "evidence_id": "EVID_07",
-          "text": "Morgan was down in the lab at 10 PM doing water samples. He did that a lot during high tide.",
-          "embedding_text": "What does Riley say about Morgan's research station log?",
-          "tags": ["evidence", "timeline"]
+          "text": "Morgan was down in the lab at 10 PM doing water samples... he did that a lot during high tide...",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does riley chen say? Morgan was down in the lab at 10 PM doing water samples... he did that a lot during high tide...",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
         },
         {
-          "source_id": "riley_evid_08",
+          "source_id": "riley_chen_evid_07_2",
+          "evidence_id": "EVID_07",
+          "text": "Yeah, Morgan always wrote down when he was going to sample. He was really organized about that stuff.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does riley chen say? Yeah, Morgan always wrote down when he was going to sample. He was really organized about that stuff.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_07_3",
+          "evidence_id": "EVID_07",
+          "text": "10 PM was pretty normal for Morgan. He said the best data came from high tide samples.",
+          "embedding_text": "What does Morgan's station log show? When was Morgan supposed to be in the lab? What does riley chen say? 10 PM was pretty normal for Morgan. He said the best data came from high tide samples.",
+          "tags": [
+            "evidence",
+            "timeline"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_08_1",
           "evidence_id": "EVID_08",
-          "text": "Those definitely aren't mine. And that rope is really wet and covered in seaweed. Catch must have been outside for a really long time, right down by the water in the storm.",
-          "embedding_text": "What does Riley say about the muddy boot prints and wet rope?",
-          "tags": ["evidence", "catch"]
+          "text": "Those definitely aren't mine. And that rope is really wet and covered in seaweed... Catch must have been outside for a really long time, right down by the water in the storm.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does riley chen say? Those definitely aren't mine. And that rope is really wet and covered in seaweed... Catch must have been outside for a really long time, right down by the water in the storm.",
+          "tags": [
+            "evidence",
+            "catch"
+          ]
         },
         {
-          "source_id": "riley_evid_09",
+          "source_id": "riley_chen_evid_08_2",
+          "evidence_id": "EVID_08",
+          "text": "I was way too scared of the storm to go outside. Those prints are huge compared to my shoes anyway.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does riley chen say? I was way too scared of the storm to go outside. Those prints are huge compared to my shoes anyway.",
+          "tags": [
+            "evidence",
+            "catch"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_08_3",
+          "evidence_id": "EVID_08",
+          "text": "Catch is the only one with boots like that. He's always wearing them.",
+          "embedding_text": "What do the muddy boot prints and wet rope mean? Who was outside during the storm? What does riley chen say? Catch is the only one with boots like that. He's always wearing them.",
+          "tags": [
+            "evidence",
+            "catch"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_09_1",
           "evidence_id": "EVID_09",
-          "text": "Oh god, those color-change tests are the worst. You literally just stand there and stare. James couldn't have gone anywhere.",
-          "embedding_text": "What does Riley say about the timed chemical test?",
-          "tags": ["evidence", "james"]
+          "text": "Oh god, those color-change tests are the worst! You literally just stand there and stare. Morgan made me do one once and I almost fell asleep. James couldn't have gone anywhere.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does riley chen say? Oh god, those color-change tests are the worst! You literally just stand there and stare. Morgan made me do one once and I almost fell asleep. James couldn't have gone anywhere.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
         },
         {
-          "source_id": "riley_evid_10",
+          "source_id": "riley_chen_evid_09_2",
+          "evidence_id": "EVID_09",
+          "text": "I remember doing one of these and it took forever. You really can't leave or you miss the color change.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does riley chen say? I remember doing one of these and it took forever. You really can't leave or you miss the color change.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_09_3",
+          "evidence_id": "EVID_09",
+          "text": "James showed me his results when he came upstairs at midnight. He was so relieved to be done with the test.",
+          "embedding_text": "What does this timed test prove? Why do these chemical test tubes matter? What does riley chen say? James showed me his results when he came upstairs at midnight. He was so relieved to be done with the test.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_10_1",
           "evidence_id": "EVID_10",
-          "text": "Yeah. James came up at midnight and we worked on spreadsheets for a few hours using the test results he had just finished gathering.",
-          "embedding_text": "What does Riley say about the beacon room security log?",
-          "tags": ["evidence", "james"]
+          "text": "Yeah! James came up at midnight and we worked on spreadsheets for a few hours, using the test results he had just finished gathering. I'm... I'm actually kind of embarrassed, but I accidentally fell asleep up here after James left. I woke up to Catch yelling about finding Morgan's body. It was horrible.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does riley chen say? Yeah! James came up at midnight and we worked on spreadsheets for a few hours, using the test results he had just finished gathering. I'm... I'm actually kind of embarrassed, but I accidentally fell asleep up here after James left. I woke up to Catch yelling about finding Morgan's body. It was horrible.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
         },
         {
-          "source_id": "riley_evid_11",
+          "source_id": "riley_chen_evid_10_2",
+          "evidence_id": "EVID_10",
+          "text": "I was so relieved when James came up at midnight. I'd been alone up here for hours and the storm was freaking me out.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does riley chen say? I was so relieved when James came up at midnight. I'd been alone up here for hours and the storm was freaking me out.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_10_3",
+          "evidence_id": "EVID_10",
+          "text": "We worked on data until like 3 AM. James was tired from standing at the bench all night. Then I... I fell asleep and didn't wake up until morning when Catch found Morgan.",
+          "embedding_text": "What does the beacon room security log show? Who was in the beacon room overnight? What does riley chen say? We worked on data until like 3 AM. James was tired from standing at the bench all night. Then I... I fell asleep and didn't wake up until morning when Catch found Morgan.",
+          "tags": [
+            "evidence",
+            "james"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_11_1",
           "evidence_id": "EVID_11",
-          "text": "That's Yuki's jacket. It does smell kind of chemical-y. I wonder why?",
-          "embedding_text": "What does Riley say about Yuki's damp jacket?",
-          "tags": ["evidence", "yuki"]
+          "text": "That's Yuki's jacket... it does smell kind of chemical-y. I wonder why?",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does riley chen say? That's Yuki's jacket... it does smell kind of chemical-y. I wonder why?",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_11_2",
+          "evidence_id": "EVID_11",
+          "text": "Um, that jacket is really damp. More than just from humidity, I think?",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does riley chen say? Um, that jacket is really damp. More than just from humidity, I think?",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
+        },
+        {
+          "source_id": "riley_chen_evid_11_3",
+          "evidence_id": "EVID_11",
+          "text": "I've smelled that chemical smell before. It's from the treated water Morgan uses... used... in the tidal pool.",
+          "embedding_text": "Why is Yuki's jacket damp? Why does the jacket smell like chemicals? What does riley chen say? I've smelled that chemical smell before. It's from the treated water Morgan uses... used... in the tidal pool.",
+          "tags": [
+            "evidence",
+            "yuki"
+          ]
         }
       ]
     }

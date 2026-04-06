@@ -58,7 +58,14 @@ def test_retrieval_hit_returns_structured_response():
     result = router.route(request)
 
     assert result.route == "retrieval"
-    assert "timed water quality tests" in result.response.lower()
+    assert any(
+        phrase in result.response.lower()
+        for phrase in (
+            "timed water quality tests",
+            "thirty-minute interval",
+            "progression of the reaction",
+        )
+    )
     assert result.clues_unlocked == []
 
 
@@ -122,7 +129,7 @@ def test_ambient_question_falls_back_without_random_evidence_blurt():
     assert result.clues_unlocked == []
 
 
-def test_literal_evidence_like_question_does_not_auto_unlock_clue():
+def test_natural_evidence_question_can_hit_retrieval_without_auto_unlocking_clue():
     router, llm, dataset = build_dialogue_router(
         character_path=_path("backend/character_info.txt"),
         dialogue_path=_path("backend/data/npc_dialogue.json"),
@@ -138,7 +145,7 @@ def test_literal_evidence_like_question_does_not_auto_unlock_clue():
 
     result = router.route(request)
 
-    assert result.route == "llm"
+    assert result.route == "retrieval"
     assert result.clues_unlocked == []
 
 
@@ -158,8 +165,15 @@ def test_natural_evidence_question_with_evidence_id_stays_case_related():
 
     result = router.route(request)
 
-    assert result.route == "llm"
-    assert "normal question" not in result.response.lower()
+    assert result.route == "retrieval"
+    assert any(
+        phrase in result.response.lower()
+        for phrase in (
+            "contamination tests",
+            "wear gloves",
+            "safety procedures",
+        )
+    )
 
 
 def test_confession_override_requires_all_trigger_clues():
