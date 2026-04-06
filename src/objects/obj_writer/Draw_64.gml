@@ -60,11 +60,11 @@ for (n = 1; n <= strpos; n++) { //is that an n++ reference?!
 		}
 	}
 	
-	if (char == "\n") {
+	/*if (char == "\n") {
 		xx = writex;
 		yy += vspacing;
 		continue;
-	}
+	}*/
 	if (char == "/") {
 		lock = 1;
 		continue;
@@ -105,6 +105,12 @@ for (n = 1; n <= strpos; n++) { //is that an n++ reference?!
 		finaly += (ranger((textshake + 1) / 2));
 	}
 	//draw_text_color(finalx + 0.27, finaly + 0.27, char, bgtop, bgtop, btbtm, btbtm, 1);
-	draw_text(finalx, finaly, char);
-	xx += string_width(char);
+	//draw_text(finalx, finaly, char);
+	//xx += string_width(char);
+	
+	myletter = string_char_at(text, n);
+	if (string_length(mystring) < n) {
+		mystring += myletter;
+	}
+	draw_text_ext(finalx, finaly, mystring, vspacing, 516);
 }

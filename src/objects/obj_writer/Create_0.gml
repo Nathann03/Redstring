@@ -11,5 +11,5 @@ pageno = 0;
 formatted = false;
 length = strlen(text);
 gamepad = (global.gamepad != -1);
-event_user(2);
+//event_user(2);
 alarm[0] = textspeed;

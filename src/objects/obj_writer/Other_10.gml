@@ -2,6 +2,7 @@
 if (lock == 1) { //normal
 	lock = 0;
 	char = " ";
+	mystring = ""
 	strpos = 0;
 	lineno = 0;
 	xx = writex;
@@ -11,7 +12,7 @@ if (lock == 1) { //normal
 	originaltext = text;
 	formatted = false;
 	length = strlen(text);
-	event_user(2);
+	//event_user(2);
 	if (text == "%%") {
 		instance_destroy();
 	}
