@@ -8,8 +8,10 @@ function scr_textrender(txr) {
 			writey = y + 2;
 			textfont = fnt_mainb;
 			textcolor = c_white;
+			textshake = 0;
 			//textsound = snd_txt1;
 			textspeed = 2;
+			maxchar = 40;
 			break;
 	}
 }

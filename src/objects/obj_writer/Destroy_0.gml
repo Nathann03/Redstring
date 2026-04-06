@@ -1,0 +1,1 @@
+global.npc_name = "";

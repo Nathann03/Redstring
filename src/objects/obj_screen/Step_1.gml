@@ -15,6 +15,33 @@ global.inputPressed[KEY.CANCEL] |= keyboard_check_pressed(ord("X"));
 global.inputHeld[KEY.CANCEL] |= keyboard_check_direct(ord("X"));
 global.inputPressed[KEY.MENU] |= keyboard_check_pressed(ord("C"));
 global.inputHeld[KEY.MENU] |= keyboard_check_direct(ord("C"));
+if (global.gamepad != -1) {
+	for (var i = 0; i < KEY.COUNT; i++) {
+		global.inputPressed[i] |= gamepad_button_check_pressed(global.gamepad, global.inputMapGP[i]);
+		global.inputHeld[i] |= gamepad_button_check(global.gamepad, global.inputMapGP[i]);
+	}
+	global.inputHeld[KEY.UP] |= (gamepad_axis_value(global.gamepad, gp_axislv) < -0.25);
+	global.inputHeld[KEY.DOWN] |= (gamepad_axis_value(global.gamepad, gp_axislv) > 0.25);
+	global.inputHeld[KEY.LEFT] |= (gamepad_axis_value(global.gamepad, gp_axislh) < -0.25);
+	global.inputHeld[KEY.RIGHT] |= (gamepad_axis_value(global.gamepad, gp_axislh) > 0.25);
+	global.inputPressed[KEY.UP] |= (gamepad_axis_value(global.gamepad, gp_axislv) < -0.25);
+	global.inputPressed[KEY.DOWN] |= (gamepad_axis_value(global.gamepad, gp_axislv) > 0.25);
+	global.inputPressed[KEY.LEFT] |= (gamepad_axis_value(global.gamepad, gp_axislh) < -0.25);
+	global.inputPressed[KEY.RIGHT] |= (gamepad_axis_value(global.gamepad, gp_axislh) > 0.25);
+	for (var i = KEY.UP; i <= KEY.RIGHT; i++) {
+		if (global.inputPressed[i]) {
+			if (!gamepadButtonPressed[i] || gamepadPressHoldTime[i] >= 15) {
+				gamepadButtonPressed[i] = true;
+			} else {
+				global.inputPressed[i] = false;
+				gamepadPressHoldTime[i]++;
+			}
+		} else {
+			gamepadButtonPressed[i] = false;
+			gamepadPressHoldTime[i] = 0;
+		}
+	}
+}
 #endregion Input Manager
 
 #region Debug

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_buttonstring_to_id",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_buttonstring_to_id",
+  "parent":{
+    "name":"Writer",
+    "path":"folders/Scripts/Writer.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

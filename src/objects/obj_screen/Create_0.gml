@@ -15,6 +15,9 @@ debugMessage = "";
 showDebugText = true;
 d_SaveGamePNG = false;
 
+gamepadButtonPressed = array_create(KEY.COUNT, false);
+gamepadPressHoldTime = array_create(KEY.COUNT, 0);
+
 scr_start();
 
 if (global.debug) {

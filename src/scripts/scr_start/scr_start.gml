@@ -1,6 +1,7 @@
 function scr_start() {
 	// constants
-	#macro VERSION "rd20260405" // rd-year-month-day-revision
+	 // rd-year-month-day-revision
+	#macro VERSION "rd" + (string(date_get_year(GM_build_date)) + (date_get_month(GM_build_date) < 10 ? ("0" + string(date_get_month(GM_build_date))) : string(date_get_month(GM_build_date))) + (date_get_day(GM_build_date) < 10 ? ("0" + string(date_get_day(GM_build_date))) : string(date_get_day(GM_build_date))))
 	#macro SAVE_FILE_VERSION 1
 	
 	#macro KEY_UP 5
@@ -19,6 +20,10 @@ function scr_start() {
 	global.time = 0;
 	global.txr = 1;
 	global.language = "en";
+	global.entrance = 0;
+	global.destination = -1;
+	
+	global.gamepad = -1;
 	
 	global.settings = {
 		audio: {
@@ -46,6 +51,12 @@ function scr_start() {
 	global.accusation_level = 0; // tracks the progression of the accusation menu
 	global.game_win = 0; // self explanatory
 	
+	enum AUDIO_PRIORITY {
+		MASTER = 100,
+		MUSIC = 50,
+		SFX = 25,
+	}
+	
 	//input
 	enum KEY {
 		FRET1,
@@ -67,6 +78,8 @@ function scr_start() {
 	for (var i = 0; i < KEY.COUNT; ++i) {
 		global.inputPressed[i] = false;
 		global.inputHeld[i] = false;
+		global.inputMapKB[i] = 0;
+		global.inputMapGP[i] = 0;
 	}
 	
 	global.inputMapKB[KEY.CONFIRM] = vk_enter;
@@ -77,7 +90,15 @@ function scr_start() {
 	global.inputMapKB[KEY.LEFT] = vk_left;
 	global.inputMapKB[KEY.RIGHT] = vk_right;
 	
-	global.debug = false; // causes problems w/ text input if set to true
+	global.inputMapGP[KEY.CONFIRM] = gp_face1;
+	global.inputMapGP[KEY.CANCEL] = gp_face2;
+	global.inputMapGP[KEY.MENU] = gp_face3;
+	global.inputMapGP[KEY.UP] = gp_padu;
+	global.inputMapGP[KEY.DOWN] = gp_padd;
+	global.inputMapGP[KEY.LEFT] = gp_padl;
+	global.inputMapGP[KEY.RIGHT] = gp_padr;
+	
+	global.debug = true;
 	
 	draw_set_color(c_white);
 	draw_set_font(fnt_main);

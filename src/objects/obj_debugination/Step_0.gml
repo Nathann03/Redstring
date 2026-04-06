@@ -4,6 +4,7 @@ winwin_update();
 if (keyboard_check_pressed(192)) { //tilde
 	if (!consoleActive) {
 		consoleActive = true;
+		input = "";
 		printf("Redstring {:1}", VERSION);
 		printf("WARNING: console is enabled, all game input will be ignored!");
 		show_debug_message("Console activated!");
@@ -15,7 +16,7 @@ if (keyboard_check_pressed(192)) { //tilde
 var _debugWindowFocused = winwin_has_focus(extra);
 var typed = keyboard_string;
 //var typed = ((_debugWindowFocused) ? winwin_keyboard_get_string(extra) : keyboard_string);
-if (typed != "" && canInput) {
+if (typed != "" && canInput && consoleActive) {
 	typed = string_replace_all(typed, "`", "");
 	input += typed;
 	keyboard_string = "";
