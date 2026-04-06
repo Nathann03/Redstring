@@ -1,6 +1,6 @@
 function scr_start() {
 	// constants
-	#macro VERSION "rd20260404" // rd-year-month-day-revision
+	#macro VERSION "rd20260405" // rd-year-month-day-revision
 	#macro SAVE_FILE_VERSION 1
 	
 	#macro KEY_UP 5
@@ -36,6 +36,16 @@ function scr_start() {
 		global.msg[i] = "%%";
 	}
 	
+	global.evid_collected = []; // array to track collected evidence
+	global.evid_clicked = 0 // for the evidence info in the GUI
+	global.in_menu = 0; // tracks whether a GUI is open (or if the player should not be able to move)
+	global.ai_mode = 1; // 0 = NPC dialogue is scripted, 1 = NPC dialogue is AI generated
+	global.player_msg = ""; // question the player asks in plain text
+	global.secrets = ""; // access token is stored here
+	global.npc_name = "" // most recent NPC interacted with
+	global.accusation_level = 0; // tracks the progression of the accusation menu
+	global.game_win = 0; // self explanatory
+	
 	//input
 	enum KEY {
 		FRET1,
@@ -67,7 +77,7 @@ function scr_start() {
 	global.inputMapKB[KEY.LEFT] = vk_left;
 	global.inputMapKB[KEY.RIGHT] = vk_right;
 	
-	global.debug = true;
+	global.debug = false; // causes problems w/ text input if set to true
 	
 	draw_set_color(c_white);
 	draw_set_font(fnt_main);

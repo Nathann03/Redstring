@@ -1,5 +1,6 @@
-if (!global.debug) { room_goto_next(); exit; }
-if (room != room_title) {
+//if (!global.debug) { room_goto_next(); exit; }
+if (room != room_title && !global.debug) {
+	room_goto_next();
 	option[0] = "Start Game";
 	option[1] = "File Select";
 	option[2] = "Goto Room";

@@ -5,6 +5,11 @@ quitting = false;
 quitmod = 0;
 depth = -9999;
 
+//backend interaction variables
+alarm[0] = 10; //ping backend every 10 seconds
+connectedToInternet = 0;
+ai_health = "";
+
 //debug only variables
 debugMessage = "";
 showDebugText = true;

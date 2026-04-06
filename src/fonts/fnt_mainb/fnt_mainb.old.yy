@@ -1,7 +1,7 @@
 {
   "$GMFont":"",
   "%Name":"fnt_mainb",
-  "AntiAlias":1,
+  "AntiAlias":0,
   "applyKerning":0,
   "ascender":30,
   "ascenderOffset":0,
@@ -107,7 +107,7 @@
     "124":{"character":124,"h":40,"offset":0,"shift":6,"w":4,"x":138,"y":44,},
     "125":{"character":125,"h":40,"offset":0,"shift":10,"w":8,"x":128,"y":44,},
     "126":{"character":126,"h":40,"offset":0,"shift":16,"w":14,"x":118,"y":212,},
-    "9647":{"character":9647,"h":40,"offset":7,"shift":22,"w":9,"x":134,"y":212,},
+    "9647":{"character":9647,"h":40,"offset":7,"shift":22,"w":8,"x":134,"y":212,},
   },
   "hinting":0,
   "includeTTF":false,

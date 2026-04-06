@@ -21,29 +21,44 @@ for (n = 1; n <= strpos; n++)  {
 		if (char1 == "C") { //choicer
 			
 		}
-		if (char1 == "n") { //newline
+		/*if (char1 == "n") { //newline
 			yy += vspacing;
 			xx = writex;
 			n += 1;
 			continue;
-		}
+		}*/
 	}
 	if (char == "%") {
 		if (char1 == "%") {
 			instance_destroy();
+			global.npc_name = "";
 			return;
 		}
 	}
-	/* if (n > 1 && (n-1) % 35 == 0) { //automatic text wrapping
+	/*if (n > 1 && (n-1) % 32 == 0) { //automatic text wrapping (monospaced only)
 		yy += vspacing;
 		xx = writex;
 		if (char == " ") n += 1;
-	} */
+	}*/
+	/*if (xx >= 590) { // automatic text wrapping (bad)
+		yy += vspacing;
+		xx = writex;
+		if (char == " ") n += 1;
+	}*/
+	//string_width_ext(text,vspacing,516)
 	
 	draw_set_font(textfont);
 	draw_set_color(textcolor);
 	
 	myletter = string_char_at(text, n);
-	draw_text(xx, yy, myletter);
-	xx += hspacing;
+	//draw_text(xx, yy, myletter);
+	//xx += string_width(myletter);
+	
+	if (myletter == "\\") {
+		//don't
+	} else if (string_length(mystring) < n) {
+		mystring += myletter;
+	}
+	
+	draw_text_ext(xx, yy, mystring, vspacing, 516);
 }

@@ -5,7 +5,7 @@ function scr_textrender(txr) {
 			hspacing = 16;
 			vspacing = 32;
 			writex = x + 56;
-			writey = y + 6;
+			writey = y + 2;
 			textfont = fnt_mainb;
 			textcolor = c_white;
 			//textsound = snd_txt1;

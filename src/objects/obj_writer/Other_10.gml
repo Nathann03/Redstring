@@ -5,9 +5,10 @@ if (lock == 1) {
     strpos = 0;
     alarm[0] = textspeed;
     myletter = " ";
+	mystring = "";
     for (var i = 1; i < string_length(global.msg[pageno])+1; i++) {
         letter[i] = string_char_at(global.msg[pageno], i)
     };
-    if (letter[string_length(global.msg[pageno])] != "/") global.msg[pageno] += "/"
+    if (letter[string_length(global.msg[pageno])] != "\\") global.msg[pageno] += "\\"
     text = global.msg[pageno];
 }

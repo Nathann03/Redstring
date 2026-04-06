@@ -1,6 +1,9 @@
 //if the debug console is active, don't accept input. since ENTER is one of the interact keys, you can accidently press that while entering a command.
 if (instance_exists(obj_debugination)) {if (obj_debugination.consoleActive) return;}
 
+// if player is in a menu, don't accept input
+if (global.in_menu > 0) return;
+
 #region Input Manager
 for (var i = 0; i < KEY.COUNT; i++) {
 	global.inputPressed[i] = keyboard_check_pressed(global.inputMapKB[i]);

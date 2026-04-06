@@ -1,0 +1,5 @@
+if (global.in_menu < 3 && mouse_check_button_pressed(mb_left) && position_meeting(mouse_x, mouse_y, id)) {
+	global.in_menu++;
+	instance_create_depth(10, 30, -12, obj_evidence_info);
+	global.evid_clicked = evid_id;
+}
