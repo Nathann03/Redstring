@@ -45,7 +45,7 @@ if (global.gamepad != -1) {
 #endregion Input Manager
 
 #region Debug
-if (global.debug) {
+if (global.debug || true) {
 	if (keyboard_check_pressed(vk_f2)) {
 		with(obj_roomselector) {
 			if (!selector_active)

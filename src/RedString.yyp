@@ -36,7 +36,6 @@
     {"$GMFolder":"","%Name":"Room Backgrounds","folderPath":"folders/Sprites/Room Backgrounds.yy","name":"Room Backgrounds","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Room Elements","folderPath":"folders/Sprites/Room Elements.yy","name":"Room Elements","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"UI","folderPath":"folders/Sprites/UI.yy","name":"UI","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Controller Buttons","folderPath":"folders/Sprites/UI/Controller Buttons.yy","name":"Controller Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
@@ -85,6 +84,7 @@
     {"id":{"name":"obj_screen","path":"objects/obj_screen/obj_screen.yy",},},
     {"id":{"name":"obj_text_input","path":"objects/obj_text_input/obj_text_input.yy",},},
     {"id":{"name":"obj_title_debug","path":"objects/obj_title_debug/obj_title_debug.yy",},},
+    {"id":{"name":"obj_titlescreen","path":"objects/obj_titlescreen/obj_titlescreen.yy",},},
     {"id":{"name":"obj_writer","path":"objects/obj_writer/obj_writer.yy",},},
     {"id":{"name":"obj_x_button_submenu","path":"objects/obj_x_button_submenu/obj_x_button_submenu.yy",},},
     {"id":{"name":"obj_x_button","path":"objects/obj_x_button/obj_x_button.yy",},},
@@ -154,6 +154,7 @@
     {"id":{"name":"spr_james_profile","path":"sprites/spr_james_profile/spr_james_profile.yy",},},
     {"id":{"name":"spr_james","path":"sprites/spr_james/spr_james.yy",},},
     {"id":{"name":"spr_lab_bg","path":"sprites/spr_lab_bg/spr_lab_bg.yy",},},
+    {"id":{"name":"spr_lighthouse","path":"sprites/spr_lighthouse/spr_lighthouse.yy",},},
     {"id":{"name":"spr_menubox","path":"sprites/spr_menubox/spr_menubox.yy",},},
     {"id":{"name":"spr_menubutton","path":"sprites/spr_menubutton/spr_menubutton.yy",},},
     {"id":{"name":"spr_office_bg","path":"sprites/spr_office_bg/spr_office_bg.yy",},},
