@@ -50,6 +50,9 @@ function scr_start() {
 	global.npc_name = "" // most recent NPC interacted with
 	global.accusation_level = 0; // tracks the progression of the accusation menu
 	global.game_win = 0; // self explanatory
+	global.accuse_npc = ""; // for end cutscene
+	global.accuse_evidence = 0; // for end cutscene
+	global.accuse_location = 0; // for end cutscene
 	
 	enum AUDIO_PRIORITY {
 		MASTER = 100,
@@ -98,7 +101,7 @@ function scr_start() {
 	global.inputMapGP[KEY.LEFT] = gp_padl;
 	global.inputMapGP[KEY.RIGHT] = gp_padr;
 	
-	global.debug = true;
+	global.debug = false;
 	
 	draw_set_color(c_white);
 	draw_set_font(fnt_main);

@@ -28,7 +28,7 @@ if (global.ai_mode == 1 && global.player_msg != "" && request_sent == 0) {
 		}
 	};
 	
-	request = http_request("http://52.15.134.116:8000/dialogue", "POST", request_header, json_stringify(request_data));
+	request = http_request("http://3.16.160.186:8000/dialogue", "POST", request_header, json_stringify(request_data));
 	show_debug_message("request_data " + json_stringify(request_data));
 	
 	ds_map_destroy(request_header);
